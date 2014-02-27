@@ -99,5 +99,15 @@
     "github_repo":"niryariv/opentaba-server",
     "leaders": "niryariv",
     "tags":["Node.js","Javascript","Python"]
+    },
+    {
+      "name": "הגשמה ציבורית",
+      "about":"פטפורמה מונחית פתרונות, לחיבור בין עובדי ציבור",
+      "status":"דגירה",
+      "github_repo":"TzahiM/NeuroNet",
+      "leaders": "TzahiM",
+      "permalink":"http://kuterless.org.il/",
+      "entry_level":"מתחילים",
+      "tags":["Python","Django"]
     }
   ]
