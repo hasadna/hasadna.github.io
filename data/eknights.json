@@ -29,7 +29,7 @@
     "github_repo":"hasadna/openmuni-budgets",
     "leaders": ["pwalsh","idoivri","ydaniv"],
     "tags": ["Django", "Backbone", "D3", "jQuery"]
-	"discussion_board": "https://groups.google.com/forum/#!forum/open-municipality",
+    "discussion_board": "https://groups.google.com/forum/#!forum/open-municipality"
   },
     {
     "name": "פותחן התקציב",
@@ -41,7 +41,7 @@
     "leaders": ["akariv","mushon"],
     "tags": ["Backbone", "D3"]
   },
-      {
+    {
     "name": "התקציב הפתוח",
     "permalink": "http://budget.msh.gov.il",
     "about": "הצגת תקציב המדינה, מאז 1992 ועד 2014, השאאה היסטורית חיפוש ועוד",
