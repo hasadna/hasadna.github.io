@@ -27,7 +27,7 @@
     "entry_level": "גיבורי-על",
     "github_repo":"hasadna/openmuni-budgets",
     "leaders": ["pwalsh","idoivri","ydaniv"],
-    "tags": ["Django", "Backbone", "D3", "jQuery"]
+    "tags": ["Django", "Backbone", "D3", "jQuery"],
     "discussion_board": "https://groups.google.com/forum/#!forum/open-municipality"
   },
     {
