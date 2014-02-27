@@ -79,5 +79,15 @@
     "leaders": ["uda"],
     "tags": ["Python","Django","Javascript"],
     "permalink": "http://he.wikisource.org/wiki/%D7%A1%D7%A4%D7%A8_%D7%94%D7%97%D7%95%D7%A7%D7%99%D7%9D_%D7%A9%D7%9C_%D7%9E%D7%93%D7%99%D7%A0%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C"
-  }
+  },
+   {
+    "name": "תביא ת'דאטה",
+    "about":  "פלטפורמה פתוחה לקבלת מאגרי מידע ממשרדי הממשלה והרשויות השונות. הפלטפורמה הבסיסית הינה Alaveteli של הארגון הבריטי mySociety, אשר תורגמה והוסבה לשימוש מקומי.",
+    "statug": "מתקדמים",
+    "entry_level": "מתקדמים",
+    "github_repo": "hasadna / alavateli",
+    "leaders": "yauzi",
+    "tags": ["Ruby", "email"],
+    "permalink": "http://askdata.org.il/"
+   }
   ]
