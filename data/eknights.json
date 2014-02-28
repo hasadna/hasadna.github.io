@@ -109,5 +109,15 @@
       "permalink":"http://kuterless.org.il/",
       "entry_level":"מתחילים",
       "tags":["Python","Django"]
+    },
+    {
+      "name": "פנסיה פתוחה",
+      "about": "מאגר מידע שינגיש וישקף לציבור את האופן בו מושקעים כספי הפנסיה שלו",
+      "status": "לקראת בקיעה",
+      "github_repo": "hasadna/OpenPension",
+      "leaders":"Nevepere",
+      "entry_level":"מתקדמים",
+      "github_repo":"hasadna/OpenPension",
+      "tags":[]
     }
   ]
