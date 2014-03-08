@@ -1,0 +1,88 @@
+<style>
+/* TODO: move it to it own file.... */
+    .index-header {
+        border-bottom: 1.25rem solid #000000;
+        background-color: #fba76f;
+        height: 13.75rem;
+        margin-bottom: 1.25rem;
+        position: relative;
+    }
+    .eKnight-wrapper {
+        display: inline;
+    }
+    .eKnight {
+
+        direction: rtl;
+        background-color: #c7e1df;
+        border: 1px solid #acd3d0;
+        color: #404040;
+        padding: 0 0.9375rem 0.9375rem;
+        height: 19.375rem;
+        display: inline-block;
+        width: 40%;
+        overflow: hidden;
+        margin-bottom: 0.9375rem;
+        transition: background-color 200ms;
+    }
+
+</style>
+<div class="main">
+    <div class="index-header ">
+        <div class="row">
+            <header class="large-12 columns">
+                <h1>ארץ החשמבירים <small class="subheader">מבית הסדנא לידע ציבורי</small></h1>
+            </header>
+        </div>
+    </div>
+    <div class="eknights">
+
+        <div class="row">
+
+            <article ng-repeat="eKnight in eKnights"
+                     class="eKnight-wrapper large-6 medium-6 small-12 columns">
+                <div class="eKnight">
+                    <header>
+                        <h1>{{eKnight.name}}</h1>
+                        <ul class="semantic inline">
+                            <li>
+                                <strong>סטטוס: </strong> {{eKnight.status}}
+                            </li>
+                            <li>
+                                <strong>רמת כניסה: </strong> {{eKnight.status}}
+                            </li>
+
+                        </ul>
+                    </header>
+                    <p>{{eKnight.about}}</p>
+
+                    <footer>
+
+                        <div class="button-bar">
+                            <ul class="button-group">
+
+                                <li>
+                                    <a class="social-button" href="{{eKnight.permalink}}" target="_blank"><i class="fa fa-home"></i> עמוד הבית</a>
+                                </li>
+
+
+                                <li>
+                                    <a class="social-button" href="#/{{eKnight.slug}}"><i class="fa fa-comments-o"></i>עמוד החשמביר</a>
+                                </li>
+
+
+                                <li>
+                                    <a class="social-button" href="https://api.github.com/repos/hasadna/Open-Knesset" target="_blank"><i class="fa fa-github"></i> גיטהאב</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </footer>
+                </div>
+                <br ng-if="$index % 2 === 0">
+
+            </article>
+        </div>
+
+    </div>
+    <footer class="app-footer"></footer>
+</div>
