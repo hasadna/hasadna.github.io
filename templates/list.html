@@ -59,7 +59,7 @@
                     </span>
                     {{issue.title}}
                 </h4>
-                <div class="{{issue.body_lang}}-issue-body like-a-pre"><span ng-bind-html="issue.body|highlight:search">{{issue.body|highlight:search}}</span>
+                <div class="{{issue.body_lang}}-issue-body like-a-pre"><span ng-bind-html="issue.body|highlight:search|trust"></span>
                 </div>
                 <span class="badge pull-right"
                       style="background-color: #{{label.color}}"

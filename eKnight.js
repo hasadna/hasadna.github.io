@@ -1,18 +1,24 @@
 
 
+App.filter('trust', function($sce) {
+    return function(text) {
+        return $sce.trustAsHtml(text);
+    };
+});
+
+
 /***
  * 
  * @param {type} param1
  * @param {type} param2
  */
-App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, arrayUtill, $http, $sce, $routeParams) {
+App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, arrayUtill, $http, $routeParams) {
 
     $scope.selectedLabels = new Array();
     $scope.stateControls = {
         showIssuesWithComments: true,
         showIssuesWithOutComments: true
     };
-
 
     $scope.eKnight = _.filter(eKnightsData, function(eKnight) {
         return eKnight.slug === $routeParams.eKnight; //$sce.trustAsResourceUrl($routeParams.eKnight);
@@ -49,19 +55,9 @@ App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, arrayU
         $scope.labels = arrayUtill.clusterNcount(labels, 'name');
 
 
-
-        $scope.to_trusted = function(html_code) {
-            return $sce.trustAsHtml(html_code);
-        };
-        $scope.render = function(e) {
-            return $(e).html();
-        };
-
         $scope.updateState = function() {
-//            debugger;
-//            $scope.stateControls = $scope.stateControls;
+            //debugger;$scope.stateControls = $scope.stateControls;
             $scope.$apply();
-
         };
 
         $scope.setSelectedLabels = function() {
@@ -110,6 +106,5 @@ App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, arrayU
                 loadComments(data.length - 1);
             });
         };
-
     });
 });
