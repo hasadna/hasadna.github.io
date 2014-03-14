@@ -17,8 +17,11 @@ var eKnightsData =
                 "slug": "open-knesset",
                 "discussion_board": "https://groups.google.com/forum/#!forum/open-knesset",
                 "github_repo": "https://github.com/hasadnaOpen-Knesset",
-                "leaders": ["ofri", "MeirKriheli", "amirnissim"],
-                "tags": ["Django", "Python", "Postgresql"]
+                "leaders": [
+                    "ofri",
+                    "MeirKriheli",
+                    "amirnissim"
+                ]
             },
             {
                 "name": "קהילה פתוחה",
@@ -30,8 +33,10 @@ var eKnightsData =
                 "issuesUrl": "https://api.github.com/repos/hasadna/OpenCommunity/issues",
                 "slug": "open-community",
                 "github_repo": "https://github.com/hasadna/OpenCommunity",
-                "leaders": ["BoazChen", "nonZero"],
-                "tags": ["Django", "Python", "Bootstrap3"]
+                "leaders": [
+                    "BoazChen",
+                    "nonZero"
+                ]
             },
             {
                 "name": "התקציב המקומי הפתוח",
@@ -41,8 +46,11 @@ var eKnightsData =
                 "github_repo": "https://github.com/hasadna/openmuni-budgets",
                 "issuesUrl": "https://api.github.com/repos/hasadna/openmuni-budgets/issues",
                 "slug": "openmuni-budgets",
-                "leaders": ["pwalsh", "idoivri", "ydaniv"],
-                "tags": ["Django", "Backbone", "D3", "jQuery"],
+                "leaders": [
+                    "pwalsh",
+                    "idoivri",
+                    "ydaniv"
+                ],
                 "discussion_board": "https://groups.google.com/forum/#!forum/open-municipality"
             },
             {
@@ -54,8 +62,10 @@ var eKnightsData =
                 "issuesUrl": "https://api.github.com/repos/hasadna/open-budget/issues",
                 "slug": "open-budget",
                 "github_repo": "https://github.com/hasadna/openmuni-budgets",
-                "leaders": ["akariv", "mushon"],
-                "tags": ["Backbone", "D3"]
+                "leaders": [
+                    "akariv",
+                    "mushon"
+                ]
             },
             {
                 "name": "התקציב הפתוח",
@@ -66,8 +76,10 @@ var eKnightsData =
                 "github_repo": "OpenBudget/obudget",
                 "issuesUrl": "https://api.github.com/repos/hasadna/obudget/issues",
                 "slug": "obudget",
-                "leaders": ["akariv", "daonb"],
-                "tags": ["GWT", "Django"]
+                "leaders": [
+                    "akariv",
+                    "daonb"
+                ]
             },
             {
                 "name": "מעקב טרכטנברג",
@@ -78,8 +90,10 @@ var eKnightsData =
                 "issuesUrl": "https://api.github.com/repos/hasadna/gov-watch/issues",
                 "slug": "gov-watch",
                 "github_repo": "akariv/gov-watch",
-                "leaders": ["akariv", "mushon"],
-                "tags": ["Flask", "Redis", "bootstrap", "isotope"]
+                "leaders": [
+                    "akariv",
+                    "mushon"
+                ]
             },
             {
                 "name": "Anyway (שם זמני)",
@@ -89,8 +103,10 @@ var eKnightsData =
                 "github_repo": "hasadna/anyway",
                 "issuesUrl": "https://api.github.com/repos/hasadna/anyway/issues",
                 "slug": "anyway",
-                "leaders": ["sagism", "ronreiter"],
-                "tags": ["Python", "Django", "Javascript"]
+                "leaders": [
+                    "sagism",
+                    "ronreiter"
+                ]
             },
             {
                 "name": "ספר החוקים",
@@ -100,9 +116,10 @@ var eKnightsData =
                 "issuesUrl": "https://api.github.com/repos/hasadna/openlaw-bot/issues",
                 "slug": "openlaw-bot",
                 "github_repo": "hasadna/openlaw-bot",
-                "leaders": ["uda"],
-                "tags": ["Python", "Django", "Javascript"],
-                "permalink": "http://he.wikisource.org/wiki/%D7%A1%D7%A4%D7%A8_%D7%94%D7%97%D7%95%D7%A7%D7%99%D7%9D_%D7%A9%D7%9C_%D7%9E%D7%93%D7%99%D7%A0%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C"
+                "leaders": [
+                    "uda"
+                ],
+                "permalink": "http://he.wikisource.org/wiki/%D7%A1%D7%A4%D7%A8_%D7%94%D7%97%D7%95%D7%A7%D…%D7%A9%D7%9C_%D7%9E%D7%93%D7%99%D7%A0%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C"
             },
             {
                 "name": "תביא ת'דאטה",
@@ -113,7 +130,6 @@ var eKnightsData =
                 "issuesUrl": "https://api.github.com/repos/hasadna/alaveteli/issues",
                 "slug": "alaveteli",
                 "leaders": "yauzi",
-                "tags": ["Ruby", "Email"],
                 "permalink": "http://askdata.org.il/"
             },
             {
@@ -125,8 +141,7 @@ var eKnightsData =
                 "github_repo": "niryariv/opentaba-server",
                 "issuesUrl": "https://api.github.com/repos/hasadna/opentaba-server/issues",
                 "slug": "opentaba-server",
-                "leaders": "niryariv",
-                "tags": ["Node.js", "Javascript", "Python"]
+                "leaders": "niryariv"
             },
             {
                 "name": "הגשמה ציבורית",
@@ -135,8 +150,7 @@ var eKnightsData =
                 "github_repo": "TzahiM/NeuroNet",
                 "leaders": "TzahiM",
                 "permalink": "http://kuterless.org.il/",
-                "entry_level": "מתחילים",
-                "tags": ["Python", "Django"]
+                "entry_level": "מתחילים"
             },
             {
                 "name": "פנסיה פתוחה",
@@ -146,7 +160,6 @@ var eKnightsData =
                 "slug": "OpenPension",
                 "github_repo": "hasadna/OpenPension",
                 "leaders": "Nevepere",
-                "entry_level": "מתקדמים",
-                "tags": []
+                "entry_level": "מתקדמים"
             }
         ];
