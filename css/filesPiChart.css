@@ -1,0 +1,45 @@
+.filesPiChart{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+}
+
+#log-box{
+    width: 339px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 3;
+    overflow-y: scroll;
+}
+
+
+#log-box p {
+    margin: 0px 0px 0px;
+    padding: 6px 2px 6px 4px;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.pi-odd{
+    background-color: rgb(218, 218, 218);
+}
+.pi-author{
+    font-weight: bold;
+}
+.pi-comm-title{
+    text-decoration: underline;
+}
+
+.pi-commit{
+    word-break: break-all;
+    word-wrap: break-word;    
+}
+.pi-message{
+}

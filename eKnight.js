@@ -12,7 +12,9 @@ App.filter('trust', function($sce) {
  * @param {type} param1
  * @param {type} param2
  */
-App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, arrayUtill, $http, $routeParams) {
+App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieChartService, arrayUtill, $http, $routeParams) {
+
+    $scope.pieChartService = pieChartService;
 
     $scope.selectedLabels = new Array();
     $scope.stateControls = {

@@ -2,7 +2,7 @@
 
 <div ng-include="'templates/header.html'"></div>
 
-
+<gh-visualization visible="pieChartVisible.visible"></gh-visualization>
 <div class="row row-fix">
     <div class="col-xs-2"  >
         <div data-ui-scrollfix="+297">
@@ -59,7 +59,7 @@
                     </span>
                     {{issue.title}}
                 </h4>
-                <div class="{{issue.body_lang}}-issue-body like-a-pre"><span ng-bind-html="issue.body|highlight:search|trust"></span>
+                <div class="{{issue.body_lang}}-issue-body like-a-pre"><span ng-bind-html="issue.body|highlight:search | trust"></span>
                 </div>
                 <span class="badge pull-right"
                       style="background-color: #{{label.color}}"
