@@ -54,10 +54,15 @@ function humanFileSize(bytes, si) {
 
 
 App.service('pieChartService', function($rootScope, $http) {
-
+    var cache = null;
     this.getJSON = function(cb) {
+
         var req = $http.get('data/data.json');
-        req.success(cb);
+        req.success(function(data, status, headers, config) {
+            cache = data;
+            cb(data);
+        });
+
         req.error(function(data, status, headers, config) {
             alert(status + " | bad");
         });
@@ -106,7 +111,9 @@ App.directive('ghVisualization', function(pieChartService, commentsHandler) {
                         .attr("transform", "translate(" + viewportWidth / 3 + "," + viewportHeight * .52 + ")");
 
                 scope.$watch('piChartData', function() {
-
+                    if (scope.piChartData === undefined)
+                        return;
+                    
                     function process_data(data, level, start_deg, stop_deg) {
                         var name = data.name;
                         var total = data.size;
@@ -251,10 +258,10 @@ App.directive('ghVisualization', function(pieChartService, commentsHandler) {
                             if (i % 2 !== 0)
                                 comm.classList.add('pi-odd');
                             comm.innerHTML =
-                                    "<span class=\"pi-author\">" + d.log[i].author + "</span> commit " +
+                                    "<span class=\"pi-author\">" + d.log[i].author + "</span> commited " +
                                     "<span title=\"" + d.log[i].date + "\">" +
                                     commentsHandler.timeSince(d.log[i].date) + "</span> ago.<br>" +
-                                    "<span class=\"pi-comm-title\">Commit </span>:<br><span class=\"pi-commit\">" + d.log[i].commit + "</span><br>" +
+                                    "<span class=\"pi-comm-title\">Commit</span>:<br><span class=\"pi-commit\">" + d.log[i].commit + "</span><br>" +
                                     "<span class=\"pi-comm-title\">Message</span>:<br><span class=\"pi-message\">" + d.log[i].body + "</span>";
                             logBox.appendChild(comm);
                         }

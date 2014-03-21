@@ -1,0 +1,119 @@
+.main{
+    font-family: 'Alef', sans-serif;
+    background-color: #eaeaea;
+}
+.index-header {
+    border-bottom: 1.25rem solid #000000;
+    background-color: #66dd87;
+    height: 13.75rem;
+    margin-bottom: 1.25rem;
+    color: white;
+    direction: rtl;
+    display: inline-block;
+    width: 100%;
+    line-height: 1;
+}
+.index-header h1{
+    font-size: 4em;
+    word-wrap: initial;
+    font-weight: 100;
+    margin-top: 0.5em;
+}
+.index-header h2{
+    font-size: 2em;
+    font-weight: 100;
+}
+.index-header div{
+    margin: 0 auto;
+    width: 73%;
+}
+
+.eknights {
+    margin: 0 auto;
+    width: 80%
+}
+
+.eKnight {
+    box-shadow: 0px 3px 2px #aab2bd;
+
+    direction: rtl;
+    background-color: #ffffff;
+    margin: 0.5% 0.5% 0px 0px;
+    color: #404040;
+    padding: 0 0.9375rem 0.9375rem;
+    height: 19.375rem;
+    display: inline-block;
+    width: 45%;
+    overflow: hidden;
+    transition: background-color 200ms;
+    position: relative;
+}
+
+.eKnight h3{
+    border-bottom: 1px solid rgba(212, 212, 212, 1);
+    font-weight: 100;
+    font-size: 1.6em;
+}
+.status-list{
+    list-style-position: inside;
+}
+
+.button-bar{
+    position: absolute;
+    bottom: 0px;
+    left: 11px;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    padding: 0px 0px;
+    display: inline-block;
+    margin: 0px 0px 8px 0px ;
+    transition: all 0.3s ease 0s;
+
+    background: none repeat scroll 0% 0% #4593e3;;
+    color: #FFF;
+    height: 40px;
+    min-width: 99px;
+    font-size: 16px;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+}
+.btn:hover .btn-text {
+    -webkit-transform: translateY(300%);
+    -moz-transform: translateY(300%);
+    -ms-transform: translateY(300%);
+    transform: translateY(300%);
+}
+.btn:hover .btn-icon{
+    font-size: 2em;
+    -webkit-transform: translateY(117%);
+    -moz-transform: translateY(117%);
+    -ms-transform: translateY(117%);
+    transform: translateY(117%);
+}
+.btn .btn-text {
+    width: 100%;
+    display: block;
+    height: 69%;
+    top: -22px;
+    position: relative;
+
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.btn .btn-icon{
+
+    height: 31px;
+    top: -32px;
+    position: relative;
+    transition: all 0.3s ease 0s;
+    font-size: 2em;
+    display: block;
+
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+}

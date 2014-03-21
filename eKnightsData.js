@@ -16,7 +16,7 @@ var eKnightsData =
                 "issuesUrl": "https://api.github.com/repos/hasadna/Open-Knesset/issues",
                 "slug": "open-knesset",
                 "discussion_board": "https://groups.google.com/forum/#!forum/open-knesset",
-                "github_repo": "https://github.com/hasadnaOpen-Knesset",
+                "github_repo": "https://github.com/hasadna/Open-Knesset",
                 "leaders": [
                     "ofri",
                     "MeirKriheli",
@@ -73,7 +73,7 @@ var eKnightsData =
                 "about": "הצגת תקציב המדינה, מאז 1992 ועד 2014, השאאה היסטורית חיפוש ועוד",
                 "status": "פרח מן הקן",
                 "entry_level": "גיבורי-על",
-                "github_repo": "OpenBudget/obudget",
+                "github_repo": "https://github.com/hasadna/obudget",
                 "issuesUrl": "https://api.github.com/repos/hasadna/obudget/issues",
                 "slug": "obudget",
                 "leaders": [
@@ -81,26 +81,26 @@ var eKnightsData =
                     "daonb"
                 ]
             },
-            {
-                "name": "מעקב טרכטנברג",
-                "permalink": "http://watch.gov.il",
-                "about": "מעקב אחר יישום המלצות וועדת טרכטנברג (הושק לרגל שנה למחאה החברתית, בשיתוף עם הממשלה וארגוני חברה אזרחית)",
-                "status": "פרח מן הקן",
-                "entry_level": "גיבורי-על",
-                "issuesUrl": "https://api.github.com/repos/hasadna/gov-watch/issues",
-                "slug": "gov-watch",
-                "github_repo": "akariv/gov-watch",
-                "leaders": [
-                    "akariv",
-                    "mushon"
-                ]
-            },
+            /*            {
+             "name": "מעקב טרכטנברג",
+             "permalink": "http://watch.gov.il",
+             "about": "מעקב אחר יישום המלצות וועדת טרכטנברג (הושק לרגל שנה למחאה החברתית, בשיתוף עם הממשלה וארגוני חברה אזרחית)",
+             "status": "פרח מן הקן",
+             "entry_level": "גיבורי-על",
+             "issuesUrl": "https://api.github.com/repos/hasadna/gov-watch/issues",
+             "slug": "gov-watch",
+             "github_repo": "akariv/gov-watch",
+             "leaders": [
+             "akariv",
+             "mushon"
+             ]
+             },*/
             {
                 "name": "Anyway (שם זמני)",
                 "about": "נציג באופן בהיר ונגיש מידע על תאונות, כמעט-תאונות ומפגעי תנועה ונאפשר דיון פתוח וגלוי בין נוסע לנוסע ולמקבלי ההחלטות.",
                 "status": "דגירה",
                 "entry_level": "מתקדמים",
-                "github_repo": "hasadna/anyway",
+                "github_repo": "https://github.com/hasadna/anyway",
                 "issuesUrl": "https://api.github.com/repos/hasadna/anyway/issues",
                 "slug": "anyway",
                 "leaders": [
@@ -115,7 +115,7 @@ var eKnightsData =
                 "entry_level": "מתחילים",
                 "issuesUrl": "https://api.github.com/repos/hasadna/openlaw-bot/issues",
                 "slug": "openlaw-bot",
-                "github_repo": "hasadna/openlaw-bot",
+                "github_repo": "https://github.com/hasadna/openlaw-bot",
                 "leaders": [
                     "uda"
                 ],
@@ -126,7 +126,7 @@ var eKnightsData =
                 "about": "פלטפורמה פתוחה לקבלת מאגרי מידע ממשרדי הממשלה והרשויות השונות. הפלטפורמה הבסיסית הינה Alaveteli של הארגון הבריטי mySociety, אשר תורגמה והוסבה לשימוש מקומי.",
                 "status": "דגירה",
                 "entry_level": "מתקדמים",
-                "github_repo": "hasadna/alaveteli",
+                "github_repo": "https://github.com/hasadna/alaveteli",
                 "issuesUrl": "https://api.github.com/repos/hasadna/alaveteli/issues",
                 "slug": "alaveteli",
                 "leaders": "yauzi",
@@ -138,7 +138,7 @@ var eKnightsData =
                 "permalink": "http://opentaba.info/",
                 "status": "רגע לפני בקיעה",
                 "entry_level": "מתקדמים",
-                "github_repo": "niryariv/opentaba-server",
+                "github_repo": "https://github.com/niryariv/opentaba-server",
                 "issuesUrl": "https://api.github.com/repos/hasadna/opentaba-server/issues",
                 "slug": "opentaba-server",
                 "leaders": "niryariv"
@@ -147,8 +147,9 @@ var eKnightsData =
                 "name": "הגשמה ציבורית",
                 "about": "פלטפורמה מונחית פתרונות, לחיבור בין עובדי ציבור",
                 "status": "דגירה",
-                "github_repo": "TzahiM/NeuroNet",
+                "github_repo": "https://github.com/TzahiM/NeuroNet",
                 "leaders": "TzahiM",
+                "slug": "kuterless",
                 "permalink": "http://kuterless.org.il/",
                 "entry_level": "מתחילים"
             },
@@ -157,9 +158,12 @@ var eKnightsData =
                 "about": "מאגר מידע שינגיש וישקף לציבור את האופן בו מושקעים כספי הפנסיה שלו",
                 "status": "לקראת בקיעה",
                 "issuesUrl": "https://api.github.com/repos/hasadna/OpenPension/issues",
-                "slug": "OpenPension",
-                "github_repo": "hasadna/OpenPension",
+                "slug": "open-pension",
+                "github_repo": "https://github.com/hasadna/OpenPension",
                 "leaders": "Nevepere",
                 "entry_level": "מתקדמים"
             }
         ];
+// If we are running from node let be a module. 
+if (undefined !== module && module.exports)
+    module.exports.eKnightsData = eKnightsData;

@@ -14,15 +14,17 @@ To add a new Github project to the site, please edit `eKnightsData.js` and add a
   * **about** - short descriptive text about the project
   * **status** - the project status
   * **entry_level** - what's the required expertise to participate in this project
+  * **issuesUrl** - github API link.
+  * **slug** - 
   * **discussion_board** - link to project's discussion board
   * **github_repo** - relative name of Github repo (under hasadna namespace)
   * **leaders** - Github user names of project leaders
-  * **tags** - list of tags that describe the project
 
 ## Requirements
-
+ node js
 ## Installing and running locally
 
 ```bash
-$ git clone git@github.com:hasadna/hasadna.github.io.git
+$ git clone https://github.com/hasadna/hasadna.github.io
 ```
+should run from localhost.

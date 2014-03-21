@@ -6,6 +6,9 @@ var posix = require('posix');
 var rootChecker = require('rootChecker');
 var lnCounter = require('lineCounter').createLineCounter();
 var github = require('github');
+var repositoriesData = require('../eKnightsData').eKnightsData;
+var index = repositoriesData.length - 1;
+
 rootChecker.isRootUser(function() {
     /**
      * /etc/security/limits.conf 
@@ -22,9 +25,8 @@ rootChecker.isRootUser(function() {
  */
 function dirTree(filename) {
     var stats = fs.lstatSync(filename);
-    if (filename.search('.git') !== -1)
-        return {"name": "", "size": 0, "lines": 0,
-            "children": 'no children', "log": ''};
+    if (filename.search('/\.git') !== -1)
+        return {"name": "", "size": 0, "lines": 0, "children": 'no children', "log": ''};
 
     if (stats.isDirectory()) {
         var info = new Object();
@@ -51,7 +53,6 @@ function dirTree(filename) {
         });
         return file;
     }
-
 }
 
 function getDepth(parent) {
@@ -72,21 +73,39 @@ function getDepth(parent) {
  *@param {number} code
  *@param {string} folderToMap 
  */
-var mapData = function(code, folderToMap) {
+var mapData = function(folderToMap, cb) {
 
-    var obj = dirTree(__dirname + '/Open-Knesset');
+    var obj = dirTree(__dirname + "/repositories/" + folderToMap);
     var fileWriter = function() {
-        var dataFile = "var code_hierarchy_data = " + JSON.stringify(obj) + ";";
-        fs.writeFile("cir/data.js", dataFile, function(err) {
+        fs.writeFile("../data/" + repositoriesData[index].slug + "-pi.json", JSON.stringify(obj), function(err) {
+            cb(--index);
             if (err)
                 console.log(err);
             else
-                console.log("The file was saved!\n" + "Go to: " + __dirname + "/cir/index.html");
+                console.log("../data/" + folderToMap + "-pi.json was saved!");
         });
     };
     github.setFunction(fileWriter);
 };
-github.setDotGitPath('/home/arnon/apache_public_html/tags/d3/Open-Knesset/.git');
-github.cloneOrPull('https://github.com/hasadna/Open-Knesset.git', mapData, true);
+
+
+
+
+var repositoriesPath = __dirname + "/repositories/";
+
+
+
+function main() {
+    if (index !== -1) {
+//        console.log('i: ' + index);
+        var folderName = github.getFolderName(repositoriesData[index].github_repo);
+        github.setDotGitPath(repositoriesPath + folderName + '/.git');
+        github.cloneOrPull(repositoriesData[index].github_repo + '.git', function() {
+            mapData(folderName, main);
+        }, true);
+    }
+}
+
+main();
 
 

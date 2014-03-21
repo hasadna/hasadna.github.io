@@ -17,13 +17,20 @@ var App = angular.module('App', [
  */
 App.config(function($routeProvider) {
 
-    $routeProvider.when('/:eKnight*', {
+    $routeProvider.when('/:eKnight/piChart', {
+        controller: 'piChartCtrl',
+        templateUrl: 'piVisualization/index.html',
+        caseInsensitiveMatch: true
+    });
+    $routeProvider.when('/:eKnight', {
         controller: 'eKnightCtrl',
-        templateUrl: 'templates/list.html'
+        templateUrl: 'templates/list.html',
+        caseInsensitiveMatch: true
     });
     $routeProvider.when('/', {
         controller: 'indexCtrl',
-        templateUrl: 'templates/index.html'
+        templateUrl: 'templates/index.html',
+        caseInsensitiveMatch: true
     });
 //    $routeProvider.otherwise({
 //        redirectTo: '/'

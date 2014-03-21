@@ -29,6 +29,7 @@ function init_code_hierarchy_plot(element_id, data) {
             "start_deg": start_deg, "stop_deg": stop_deg, "name": name,
             "level": level, "total": total, "size": size, "log": data.log
         });
+        window.console.log(level);
         for (var key in children) {
             var child = children[key];
             var inc_deg = (stop_deg - start_deg) / total * child.size;// child.size was child[count_index];

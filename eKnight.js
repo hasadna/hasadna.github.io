@@ -90,8 +90,8 @@ App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieCha
                 function loadComments(i) {
                     if (i === -1) {
                         commentsHandler.treatComments(comments_list);
-                        window.console.clear();
-                        window.console.log(JSON.stringify(comments_list));
+                      //  window.console.clear();
+                       // window.console.log(JSON.stringify(comments_list));
                         issue.comments_list = comments_list;
                         return;
                     }
