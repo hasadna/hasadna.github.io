@@ -9,13 +9,13 @@
 }
 
 #log-box{
-    width: 339px;
+    width: 365px;
     height: 100%;
     position: fixed;
     top: 0px;
-    right: 0px;
+    left: 0px;
     z-index: 3;
-    overflow-y: scroll;
+    overflow: auto;
 }
 
 

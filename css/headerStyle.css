@@ -1,16 +1,38 @@
 .app-header {
     border-bottom: 1.25rem solid #000000;
     background-color: #F7F7F7;
-    height: 27.75rem;
-    display: table;
+    height: 21.75rem;
     direction: rtl;
     width: 100%;
-    margin: 0px 0px 4.25rem 0px;
-    padding: 0 15px;
+    margin: 0px 0px 0.25rem 0px;
+    /*    background: #335d6e;
+        color: #cdeefc;*/
+
+    font-family: 'Alef', sans-serif;
+    background-color: #eaeaea;
+}
+.app-header-title{
+    margin: 0 auto;
+    max-width: 790px;
+}
+.app-header-title h1{
+    font-size: 5em;
+    font-weight: 100;
+}
+.app-header-title h2{
+    font-weight: 100;
+}
+.quick-link-row{
+    margin: 17px auto;
+    /*width: 49%;*/
+    max-width: 790px;
 }
 .box-quick-link {
     text-align: center;
-    margin-bottom: 10px;
+    width: 218px;
+    display: inline-block;
+    float: right;
+    margin: 0px 0px 0px 17px;
 }
 
 .box-header {

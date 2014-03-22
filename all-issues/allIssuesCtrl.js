@@ -12,9 +12,8 @@ App.filter('trust', function($sce) {
  * @param {type} param1
  * @param {type} param2
  */
-App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieChartService, arrayUtill, $http, $routeParams) {
+App.controller('allIssuesCtrl', function($scope, HebUtill, commentsHandler, arrayUtill, $http, $routeParams) {
 
-    $scope.pieChartService = pieChartService;
 
     $scope.selectedLabels = new Array();
     $scope.stateControls = {
@@ -22,19 +21,11 @@ App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieCha
         showIssuesWithOutComments: true
     };
 
-    $scope.eKnight = _.filter(eKnightsData, function(eKnight) {
-        return eKnight.slug === $routeParams.eKnight; //$sce.trustAsResourceUrl($routeParams.eKnight);
-    });
-
-    if ($scope.eKnight.length !== 0) {// TODO: 404
-    }
-    $scope.eKnight = $scope.eKnight[0];
-
-    document.title = $scope.eKnight.name;
+    document.title = "הסדנא לידע ציבורי";
 
     var http_request = $http({
         method: 'GET',
-        url: $scope.eKnight.issuesUrl
+        url: "https://api.github.com/search/issues?per_page=100&sort=created&q=user:hasadna"
     });
 
 
@@ -42,16 +33,19 @@ App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieCha
     http_request.success(function(data, status, headers, config) {
         var labels = new Array();
 
-        commentsHandler.treatComments(data);// Add title/body_lang  attribute  with hebrew Or english values - for text alignment.
+        commentsHandler.treatComments(data.items);// Add title/body_lang  attribute  with hebrew Or english values - for text alignment.
 
-        for (var i = 0; i < data.length; i++) { // Collect the labels
-            data[i].textLimit = 30;
-            for (var j = 0; j < data[i].labels.length; j++) {
-                labels.push(data[i].labels[j]);
+        for (var i = 0; i < data.items.length; i++) { // Collect the labels
+            data.items[i].textLimit = 30;
+            for (var j = 0; j < data.items[i].labels.length; j++) {
+                labels.push(data.items[i].labels[j]);
             }
         }
 
-        $scope.issues = data;
+        $scope.issues = data.items;
+        $scope.total_count = data.total_count;
+
+//        window.console.log(JSON.stringify(data));
 
         // Count labels and remove duplicates
         $scope.labels = arrayUtill.clusterNcount(labels, 'name');
@@ -111,8 +105,7 @@ App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieCha
         };
 
         $scope.readMore = function(evt, issue) {
-//            if (issue.body.trim().length < 0)
-                issue.textLimit = 1000000;
+            issue.textLimit = 1000000;//
         };
 
     });

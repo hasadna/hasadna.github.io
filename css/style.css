@@ -1,10 +1,88 @@
 
-.container-fluid {  /*See: https://github.com/twbs/bootstrap/issues/9862?source=cc*/
-    padding: 0 15px;
+.issue{
+    color: #444;
+    clear: both;
+    overflow: hidden;
+    padding: 10px 5px 10px 10px;
+    position: relative;
+    width: 81%;
+    float: right;
+    border-bottom: 1px solid #eee;
 }
-.row-fix{
-    margin-left: 0px !important;   
-    margin-right:  0px !important;   
+.authorPlaceholder, .assigneePlaceholder{
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    float: left;
+    background-color: #e5e5e5;
+    background-size: contain;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    z-index: 10;
+    position: relative;
+    border: 2px solid rgb(255, 255, 255);
+}
+.assigneePlaceholder {
+    margin-left: -20px;
+    z-index: 1;
+}
+
+.issue-title {
+    font-size: 1.25em;
+    line-height: 1.25em;
+    padding-top: 2em;
+}
+
+.issue-title-github-link,bubble-title-github {
+    float: right;
+    color: #555;
+}
+
+.issue-title-comments {
+    background: #555;
+    padding: 0px 5px;
+    font-size: .7em;
+    color: white;
+    border-radius: 6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+}
+.issue-title-comments:hover{
+    text-decoration: underline;
+}
+.issue-title-time{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.9em;
+}
+.label-warp{
+    display: block;
+}
+.label{
+    color: white;
+    margin: 0px 7px 0px 0px;
+    padding: 0px 9px 0px 9px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 9px;
+    font-size: 0.8em;
+}
+.issue-body{
+    display: inline-block;
+}
+.issueBodyOpen{
+    border-left: 1px solid rgb(177, 177, 177);
+    padding: 0px 0px 0px 8px;
+    width: 85%;
+}
+.read-more{
+    cursor: pointer;
+}
+.read-more:hover{
+    text-decoration: underline;    
 }
 
 .like-a-pre{
@@ -29,77 +107,14 @@
     top: 3px;
     position: relative;
 }
-.hebrew-issue-title{
-    float: right;
-    direction: rtl;
-}
 
-.comments-badge{
-    cursor: pointer;
-    margin: 0px 2px 0px 2px;
-}
-.comments-badge:hover{
-    text-decoration: underline;
-}
-.english-issue-body, .hebrew-issue-body{
-    min-height: 80px;
-}
-.hebrew-issue-body{
-    float: right;
-    direction: rtl;
-}
-
-.hebrew-issue-body .user-box{
-    float: right;
-    margin-left: 5px;
-}
-.english-issue-body .user-box{
-    float: left;
-    margin-right: 5px;
-}
-.user-box{
-    display: inline-block;
-    vertical-align: top
-}
-.user-box img{
-    max-height: 80px;
-    max-width: 80px;
-    border-radius: 60%;
-    /*border: 4px solid rgb(119, 119, 119);*/
-}
-
-.user-box-hebrew{
-    float: right;   
-}
-.assignee-box{
-    display: inline;
-    position: relative;
-}
-
-.user-box a{
-    display: block;
-}
-.ng-scope hr{
-    border-top: 1px solid #777;  
-}
-
-.tag-item{
-    height: 22px;
-    border-radius: 3px;
-    padding: 0px 4px 0px 4px;
-    border: 1px solid transparent;
-    cursor: pointer;
-}
-.tag-item:hover{
-    border: 1px solid #616161;
-}
-.tag-item .badge{
-    background-color: transparent;
-    border: 1px solid white;
-}
 
 .ui-match { background: yellow; }
-
+.refinement-panel{
+    width: 16.666666666666664%;
+    position: absolute;
+    padding: 0px 0px 0px 4px;
+}
 .ui-scrollfix{
     position: fixed;
     width: 16.666666666666664%;
@@ -107,12 +122,47 @@
 
     padding-right: 15px;
 }
+.search-input{
+    width: 95%;
+    padding: 1px 0px 0px 4px;
+    height: 22px;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 2px;
+}
+.search-input:hover{
+    border: 1px solid rgb(102, 102, 102)
+}
+.refinement-panel label{
+    display: block;
+    cursor: pointer
+}
+.refinement-panel label:hover{
+    text-decoration: underline;
+}
+.tag-item{
+    color: white;
+    padding: 1px 11px 1px 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    margin: 3px 0px 0px 0px;
+    border-radius: 18px;
+}
+.tag-item:active{
+    background-color: black !important;
+    color: white;
+}
+.tag-item .fa{
+    width: 16px;
+}
+.tag-item .badge{
+
+}
 
 
 
 .bubble {
     position: relative;
-    width: 78%;
+    width: calc(100% - 132px);
     min-height: 120px;
     padding: 0px;
     display: inline-block;
@@ -148,16 +198,13 @@
 }
 
 .bubble-container{
-    width: 100%;
+    width: 78%;
+    margin: 0 auto;
     padding: 0px 0px 0px 0px;
 }
 .bubble-avatar{
-    max-height: 80px;
-    max-width: 80px;
-    border-radius: 60%;
     display: inline-block;
     float: left;
-    border: 5px solid rgb(50, 126, 47);
     top: 27px;
     left: 9px;
     position: relative;
@@ -186,7 +233,15 @@
     color: #555;
 }
 .bubble-box{
-
     padding: 3px 6px 2px 7px;
     display: block;
+}
+
+
+.all-issues-header{
+    background: #335d6e;
+    color: white;
+}
+.all-issues-header p{
+    color: #cdeefc;    
 }

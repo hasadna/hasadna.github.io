@@ -78,7 +78,7 @@ App.directive('ghVisualization', function(pieChartService, commentsHandler) {
                     .attr("class", 'filesPiChart')
                     .attr("id", 'filesPiChart')
                     .append("g")
-                    .attr("transform", "translate(" + viewportWidth / 3 + "," + viewportHeight * .52 + ")");
+                    .attr("transform", "translate(" + viewportWidth / 1.5 + "," + viewportHeight * .52 + ")");
 
             scope.$watch('piChartData', function() {
                 if (scope.piChartData === undefined)
@@ -168,7 +168,8 @@ App.directive('ghVisualization', function(pieChartService, commentsHandler) {
                             return d.name;//+ "," + d.level;
                         });
 
-                var legX = 10 + -viewportWidth / 3;
+                var legX = 10 + -viewportWidth / 3.3;
+                legX = -(viewportWidth) + 900;
                 var legend = svg.append("text")
                         .attr("x", legX)
                         .attr("y", -viewportHeight * .47)
@@ -231,7 +232,7 @@ App.directive('ghVisualization', function(pieChartService, commentsHandler) {
                                 "<span class=\"pi-author\">" + d.log[i].author + "</span> commited " +
                                 "<span title=\"" + d.log[i].date + "\">" +
                                 commentsHandler.timeSince(d.log[i].date) + "</span> ago.<br>" +
-                                "<span class=\"pi-comm-title\">Commit</span>:<br><span class=\"pi-commit\">" + d.log[i].commit + "</span><br>" +
+//                                "<span class=\"pi-comm-title\">Commit</span>:<br><span class=\"pi-commit\">" + d.log[i].commit + "</span><br>" +
                                 "<span class=\"pi-comm-title\">Message</span>:<br><span class=\"pi-message\">" + d.log[i].body + "</span>";
                         logBox.appendChild(comm);
                     }

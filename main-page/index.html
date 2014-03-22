@@ -1,8 +1,27 @@
+
+<div data-ui-show="showHide" class="float-pnl info-pnl">
+    <a class="close-btn" ng-click="showHide = !showHide">
+        <i class="fa fa-times-circle"></i>
+    </a>
+    <div ng-include="'main-page/info.html'"></div>
+</div>
+<div data-ui-show="infoPnlSH" class="float-pnl what-is-eKnight">
+    <a class="close-btn" ng-click="infoPnlSH = !infoPnlSH">
+        <i class="fa fa-times-circle"></i>
+    </a>
+    <div ng-include="'main-page/what-is-eKnight.html'"></div>
+</div>
+
+
 <div class="main">
     <div class="index-header ">
         <div>
             <h1>ארץ החשמבירים </h1>
             <h2>מבית הסדנא לידע ציבורי</h2>
+
+            <a class="index-btn" ng-click="showHide = !showHide">מה הולך כאן?</a>
+            <a class="index-btn" ng-click="infoPnlSH = !infoPnlSH">מה זה חשמביר?</a>
+            <a class="index-btn" href="#/all-issues">רוצים לעזור קצת?</a>
         </div>
     </div>
     <div class="eknights">
@@ -19,15 +38,15 @@
             </ul>
 
             <div class="button-bar">
-                <a class="btn" href="{{eKnight.permalink}}" target="_blank">
+                <a class="btn" href="{{eKnight.permalink}}">
                     <span class="btn-icon fa fa-home"></span>
                     <span class="btn-text">עמוד הבית</span>
                 </a>
-                <a class="btn" href="#/{{eKnight.slug}}" target="_blank">
+                <a class="btn" href="#/{{eKnight.slug}}" >
                     <span class="btn-icon fa fa-comments-o"></span>
                     <span class="btn-text">עמוד החשמביר</span>
                 </a>
-                <a class="btn" href="{{eKnight.github_repo}}" target="_blank">
+                <a class="btn" href="{{eKnight.github_repo}}">
                     <span class="btn-icon fa fa-github"></span>
                     <span class="btn-text">גיטהאב</span>
                 </a>

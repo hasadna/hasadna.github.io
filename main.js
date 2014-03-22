@@ -22,6 +22,11 @@ App.config(function($routeProvider) {
         templateUrl: 'piVisualization/index.html',
         caseInsensitiveMatch: true
     });
+    $routeProvider.when('/all-issues', {
+        controller: 'allIssuesCtrl',
+        templateUrl: 'all-issues/list.html',
+        caseInsensitiveMatch: true
+    });
     $routeProvider.when('/:eKnight', {
         controller: 'eKnightCtrl',
         templateUrl: 'templates/list.html',
@@ -29,7 +34,7 @@ App.config(function($routeProvider) {
     });
     $routeProvider.when('/', {
         controller: 'indexCtrl',
-        templateUrl: 'templates/index.html',
+        templateUrl: 'main-page/index.html',
         caseInsensitiveMatch: true
     });
 //    $routeProvider.otherwise({
