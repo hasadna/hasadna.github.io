@@ -25,7 +25,7 @@
 
 
 <div class="issue"
-     ng-repeat="issue in filtered = (issues| githubTagsFilter:selectedLabels| checkboxesFilter:stateControls | filter:search) | orderBy:'created_at'
+     ng-repeat="issue in filtered = (issues| githubTagsFilter:selectedLabels| checkboxesFilter:stateControls | filter:search) | orderBy:'created_at':true
                  track by $index">
 
     <div class="authorPlaceholder"

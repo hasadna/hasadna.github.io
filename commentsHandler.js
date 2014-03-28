@@ -17,7 +17,7 @@ angular.module('commentsHandler',
             HebUtill.addLanguageAttribute(list);
             for (var i = 0; i < list.length; i++) {
                 var comm = list[i];
-                comm.timeSince = this.timeSince((comm.created_at));
+                comm.timeSince = this.timeSince(comm.created_at);
                 var d = new Date(comm.created_at);
                 comm.israelFormatCreated_at = d.toIsrealFormat();
 
