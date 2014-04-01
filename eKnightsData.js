@@ -1,3 +1,11 @@
+/***
+ * @description 
+ * @static
+ * @public
+ * @constant
+ * @type Array
+ */
+var eKnightsData =
 [
   {
     "name": "כנסת פתוחה",
@@ -91,3 +99,6 @@
   }
   ]
  
+// If we are running from node let be a module. 
+if (undefined !== module && module.exports)
+    module.exports.eKnightsData = eKnightsData;
