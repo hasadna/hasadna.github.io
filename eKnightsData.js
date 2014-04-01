@@ -87,7 +87,7 @@
   "entry_lecel":"מתחילים",
   "github_repo":"hasadna/OpenTrain",
   "leaders":["oferb","ekeydar"],
-  "tage":["Python","Android"]
+  "tags":["Python","Android"]
   }
   ]
  
