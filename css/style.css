@@ -43,10 +43,13 @@
     font-size: 0.7em;
     /* margin: 0px 5px 0px 0px; */
     color: rgb(12, 100, 26);
+    text-decoration: initial;
     position: absolute;
-    right: 28px;    
+    right: 28px;
 }
-
+a.issue-title-repoName:hover{
+    text-decoration: underline;
+}
 .issue-title-comments {
     background: #555;
     padding: 0px 5px;

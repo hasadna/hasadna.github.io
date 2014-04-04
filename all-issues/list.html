@@ -44,7 +44,9 @@
 
         <a href="{{issue.html_url}}" class="issue-title-github-link" target="_blank" title="View on github"><i class="fa fa-github-alt"></i>
         </a>
-        <span class="issue-title-repoName">{{issue.repoName}}</span>
+
+        <a ng-if="issue.eKnightSlug != false" href="#/{{issue.eKnightSlug}}" title="הדף של {{issue.repoName}}  " class="issue-title-repoName">{{issue.repoName}}</a>
+        <span ng-if="issue.eKnightSlug == false" class="issue-title-repoName">{{issue.repoName}}</span>
     </span>
     <span class="label-warp">
         <span class="label"
@@ -63,12 +65,11 @@
 
 
     <span class="issue-title-time"
-          title="Created at {{issue.israelFormatCreated_at}}"
-          >about {{issue.timeSince}} ago</span>
+          title="Created at {{issue.israelFormatCreated_at}}">about {{issue.timeSince}} ago</span>
 
     <div class="clearfix"></div>
 
-    <div class="bubble-container" ng-repeat="comment in issue.comments_list">
+    <div class="bubble-container" ng-repeat="comment in issue.comments_list|orderBy:'created_at'">
         <div class="authorPlaceholder bubble-avatar"
              style="background-image: url({{comment.user.avatar_url}});"
              title="Commented by {{comment.user.login}}"></div>

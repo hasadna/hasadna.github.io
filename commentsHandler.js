@@ -92,10 +92,28 @@ angular.module('commentsHandler', ['HebUtill'
                     return name;
             }
         };
+
+        var getInnerLinkFromIssue = function(issue) {
+            var url = issue.html_url.split('/');
+            var name = url[url.length - 3].toLowerCase();
+            for (var i = 0; i < eKnightsData.length; i++) {
+                if (eKnightsData[i].github_repo.toLowerCase().search(name) !== -1) {
+                    return eKnightsData[i].slug;
+                }
+            }
+            return false;
+        };
+
+        /**
+         *  @description Add repoName  and eKnightSlug to each issue
+         * @param {Array<Object>} list of issues
+         * @returns {undefined}
+         */
         this.addRapoAttribute = function(list) {
             for (var i = 0; i < list.length; i++) {
                 var issue = list[i];
-                issue.repoName = getRapoName(list[i]);
+                issue.repoName = getRapoName(issue);
+                issue.eKnightSlug = getInnerLinkFromIssue(issue);
             }
         };
 
