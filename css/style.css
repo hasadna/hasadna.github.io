@@ -41,8 +41,10 @@
 .issue-title-repoName{
     float: right;
     font-size: 0.7em;
-    margin: 0px 5px 0px 0px;
-    color: rgb(12, 100, 26);    
+    /* margin: 0px 5px 0px 0px; */
+    color: rgb(12, 100, 26);
+    position: absolute;
+    right: 28px;    
 }
 
 .issue-title-comments {
