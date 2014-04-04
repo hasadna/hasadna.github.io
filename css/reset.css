@@ -419,3 +419,13 @@ table {
 td,th {
     padding: 0;
 }
+
+
+.clearfix:before,.clearfix:after {
+    display: table;
+    content: " ";
+}
+
+.clearfix:after {
+    clear: both;
+}
