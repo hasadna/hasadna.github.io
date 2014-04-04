@@ -1,11 +1,10 @@
-
-
 Date.prototype.toIsrealFormat = function() {
     return this.getDay() + '/' + this.getMonth() + '/' + this.getFullYear();
 };
 
-angular.module('commentsHandler',
-        ['HebUtill']).factory('commentsHandler', function(HebUtill) {
+angular.module('commentsHandler', ['HebUtill'
+]).factory('commentsHandler', function(HebUtill) {
+    "use strict";
     /**
      * @constructor
      * @requires HebUtill
@@ -13,20 +12,18 @@ angular.module('commentsHandler',
     var commentsHandler = function() {
 
         this.treatComments = function(list) {
-            "use strict";
             HebUtill.addLanguageAttribute(list);
             for (var i = 0; i < list.length; i++) {
                 var comm = list[i];
                 comm.timeSince = this.timeSince(comm.created_at);
                 var d = new Date(comm.created_at);
                 comm.israelFormatCreated_at = d.toIsrealFormat();
-
             }
         };
 
         /**
-         * @description Dormat a JavaScript Date as a string stating the time elapsed.
-         * @param {strund} dateText Unix time format.
+         * @description Format a JavaScript Date as a string stating the time elapsed.
+         * @param {string} dateText Unix time format.
          * @returns {String}
          */
         this.timeSince = function(dateText) {
@@ -57,7 +54,51 @@ angular.module('commentsHandler',
             return Math.floor(seconds) + " seconds";
         };
 
+        var getRapoName = function(issue) {
+            var url = issue.html_url.split('/');
+            var name = url[url.length - 3];
+
+            switch (name.toLowerCase()) {
+                case "anyway":
+                    return 'anyway';
+                case "open-knesset":
+                    return "כנסת פתוחה";
+                case "hasadna.github.io":
+                    return "ארץ החשמבירים";
+                case "opencommunity":
+                    return "קהילה פתוחה";
+                case "openpension":
+                    return "פנסיה פתוחה";
+                case "alaveteli":
+                    return "תביא ת'דאטה";
+                case "openmuni-budgets":
+                case "open-budget":
+                    return  "התקציב המקומי הפתוח";
+                case "NeuroNet":
+                    return  "הגשמה ציבורית";
+                case "obudget":
+                    return  "התקציב הפתוח";
+                case "openlaw-bot":
+                    return "ספר החוקים";
+                case "opentaba-server":
+                    return  "תבע פתוחה";
+
+                case "openpress":
+                case "okscraper":
+                case "okscraper-django":
+                    return name;
+                default :
+                    window.console.error('' + name);
+                    return name;
+            }
+        };
+        this.addRapoAttribute = function(list) {
+            for (var i = 0; i < list.length; i++) {
+                var issue = list[i];
+                issue.repoName = getRapoName(list[i]);
+            }
+        };
+
     };
     return new commentsHandler();
-}
-);
+});

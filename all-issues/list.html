@@ -41,8 +41,10 @@
         <span class="issue-title-comments" ng-if="issue.comments != 0" data-ng-click="loadComments($event, issue)">
             <i class="fa fa-comments-o"></i> {{issue.comments}} comments
         </span>
+        
         <a href="{{issue.html_url}}" class="issue-title-github-link" target="_blank" title="View on github"><i class="fa fa-github-alt"></i>
         </a>
+        <span class="issue-title-repoName">{{issue.repoName}}</span>
     </span>
     <span class="label-warp">
         <span class="label"
