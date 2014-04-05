@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html ng-app="App">
+    <head>
+        <meta charset="utf-8">
+        <title>eKnights Editor</title>
+        <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author"       content="">
+
+        <link  rel="stylesheet" type="text/css" href="css/style.css">
+        <link  rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.rtl.css">
+        <script type="application/javascript" src="eKnightsData.js"></script>
+        <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+        <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-resource.min.js"></script>
+        <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.min.js"></script>
+        <script type="application/javascript" src="script.js"></script>
+    </head>
+
+    <body ng-view>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">עורך החשמבירים</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+                    <ul class="nav navbar-nav">
+                        <!--<li class="active"><a href="#">Home</a></li>-->
+                        <li>
+                            <button type="button"
+                                    ng-click="prev()"
+                                    class="btn btn-primary navbar-btn">
+                                <span class="glyphicon glyphicon-arrow-right"></span>
+                                הקודם</button>                            
+                            <span class="">&nbsp;</span>
+                            <button type="button"
+                                    ng-click="next()"
+                                    class="btn btn-primary navbar-btn">הבא
+                                <span class="glyphicon glyphicon-arrow-left"></span>
+                            </button>
+                        </li>
+                    </ul>
+                    <span class="pull-right">&nbsp;</span>
+                    <button type="button"
+                            ng-click="save()"
+                            class="btn btn-info pull-right navbar-btn">שמור
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+
+                        <li ng-repeat="eKnight in list"
+                            ng-class="{active: $index === index}"
+                            ng-click="setIndex($index)">
+                            <a href="">{{eKnight.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <form class="form-horizontal container">
+                    <fieldset>
+
+                        <legend>עריכת פרטי חשמביר</legend>
+                        <div class="control-group">
+                            <label class="col-sm-2 control-label" for="name">שם החשמביר</label>
+                            <div class="controls col-sm-10">
+                                <input ng-model="list[index].name" id="name" name="name" type="text" placeholder="השם של החשמביר" class="form-control">
+                                <p class="help-block">השם של החשמביר</p>
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="url">Permalink</label>
+                            <div class="controls col-sm-10">
+                                <input ng-model="list[index].permalink" id="url" name="url" type="text" placeholder="http://..." class=" en-input form-control">
+                                <p class="help-block">לינק לאתר של החשמביר</p>
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="url">About</label>
+                            <div class="controls col-sm-10">
+                                <textarea ng-model="list[index].about" class="form-control" rows="3"></textarea>
+                                <p class="help-block">הטקסט שמופיע בדף הראשי</p>
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="slug">Slug</label>
+                            <div class="controls col-sm-10">
+                                <input ng-model="list[index].slug" id="slug" name="slug" type="text" placeholder="" class="en-input form-control">
+                                <p class="help-block">הכתובת של דף החשמביר בארץ החשמבירים</p>
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="status">סטאטוס</label>
+                            <div class="controls col-sm-10">
+                                <input ng-model="list[index].status" id="status" name="status" type="text" placeholder="" class="form-control">
+                                <p class="help-block"></p>
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="entry_level">רמת כניסה</label>
+                            <div class="controls col-sm-10">
+                                <input ng-model="list[index].entry_level"  id="entry_level" name="entry_level" type="text" placeholder="" class="form-control">
+                                <p class="help-block"></p>
+                            </div>
+
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <fieldset>
+
+                                    <legend>Repositories של החשמביר</legend>
+
+                                    <button ng-click="addRepository()" type="button" class="pull-right btn btn-success"><span class="glyphicon glyphicon-plus"></span> הוספת repository
+                                    </button>
+                                    <br><br>
+
+
+                                    <span ng-repeat="repository in list[index].repositories">
+
+
+                                        <label class="col-sm-2 control-label" for="rName">שם</label>
+                                        <div class="controls col-sm-10">
+                                            <input ng-model="repository.name"   id="rName" name="rName" type="text" placeholder="" class="form-control">
+                                            <p class="help-block">שם הפרויקט – כשיש רק repository אחד, השם צריך להיות כמו השם של החשמביר.</p>
+                                        </div>
+
+                                        <label class="col-sm-2 control-label" for="url">URL</label>
+                                        <div class="controls col-sm-10">
+                                            <input ng-model="repository.url" id="rUrl" name="rUrl" type="text" placeholder="" class="en-input form-control">
+                                            <p class="help-block">הURL המלא של ה repository</p>
+                                        </div>
+
+                                        <label class="col-sm-2 control-label" for="url">About</label>
+                                        <div class="controls col-sm-10">
+                                            <textarea ng-model="repository.about" class="form-control" rows="3"></textarea>
+                                            <p class="help-block">מה המטרה של ה repository </p>
+                                        </div>
+
+                                        <button ng-click="removeRepository(repository)" type="button" class="pull-right  btn btn-danger"><span class="glyphicon glyphicon-remove"></span> מחיקת  הrepository</button>
+                                        <div class="clearfix"></div>
+                                        <br><br>
+                                    </span>
+                                </fieldset>
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+                </form>
+
+
+            </div>
+        </div>
+
+        <div 
+            ng-class="{show: showDialog === true}"
+            class="modal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header dialog-header-notify">
+                        <button type="button" class="close" ng-click="hideDialog()">×</button>
+                        <h4 class="modal-title text-info">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                            הקובץ נשמר</h4></div>
+                    <div class="modal-body text-info">
+                        הקובץ eKnightsData.js נשמר
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-click="hideDialog()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

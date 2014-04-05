@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anyway - תאונות דרכים</title>
+    <script src="/static/js/libs/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpOmft-UskZsAQth9vNl0fN6EXaRR6dZc&sensor=true&language=iw"></script>
+    <script src="/static/js/libs/oms.min.js"></script>
+    <script src="/static/js/libs/underscore.js"></script>
+    <script src="/static/js/libs/backbone.js"></script>
+    <script src="/static/js/libs/bootstrap.js"></script>
+    <script src="/static/js/libs/notify-combined.min.js"></script>
+    <script src="/static/js/libs/moment-with-langs.min.js"></script>
+    <script src="/static/js/libs/date.js"></script>
+    <script src="/static/js/libs/daterangepicker.js"></script>
+    <script src="/static/js/libs/js-itm.js"></script>
+    <script src="/static/js/markerdialog.js"></script>
+    <script src="/static/js/marker.js"></script>
+    <script src="/static/js/sidebar.js"></script>
+    <script src="/static/js/contextmenu.js"></script>
+    <script src="/static/js/map_style.js"></script>
+    <script src="/static/js/app.js"></script>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.rtl.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="/static/css/daterangepicker.css"/>
+</head>
+<body style="width: 100%; height: 100%">
+<div class='notifications top-left' id="notification"></div>
+<div id="app">
+    
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner" style="padding-right: 10px">
+            <div style="float: left; padding: 5px">
+                <a class="fb-login" style="cursor: pointer"><img src="/static/img/facebook_login.png" style="padding: 3px"/></a>
+                <div class="user-details" style="display: none">
+                    <span class="profile-name"></span>
+                    <img class="profile-picture" style="height: 30px"/>
+                    <span class="fb-logout"><a class="btn" style="margin-top: 0">יציאה</a></span>
+                </div>
+            </div>
+            <a class="brand" href="#"><img src="/static/img/anyway.png" style="height: 26px"></a>
+        </div>
+    </div>
+    <div class="main" style="position: fixed; width: 100%; height: 100%; padding-top: 40px; padding-right: 250px; box-sizing: border-box">
+        <div id="map_canvas" style="width: 100%; height: 100%; box-sizing: border-box"></div>
+    </div>
+    <div class="sidebar-container" style="position: fixed; right: 0; top: 0; bottom: 0; width: 250px; background: white; padding-top: 40px">
+        <!--
+        <ul class="nav nav-list">
+          <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+          <li><a href="#"><i class="icon-book"></i> Library</a></li>
+          <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+          <li><a href="#"><i class="i"></i> Misc</a></li>
+        </ul>
+        -->
+    </div>
+</div>
+<div id="marker-dialog-template" style="display: none">
+    <div class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>הוסף סימון</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="title">כותרת</label>
+                    <div class="controls">
+                        <input type="text" id="title" name="title" placeholder="הכנס כותרת">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="description">תיאור</label>
+                    <div class="controls">
+                        <textarea class="input-large" id="description" name="description"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a class="btn close-button">סגור</a>
+            <a class="btn btn-primary save-button">שמור סימון</a>
+        </div>
+    </div>
+</div>
+<div id="marker-content-template" style="display: none">
+    <img class="profile-image" style="float: left"/>
+    <h4 class="title"></h4>
+    <h5 class="type"></h5>
+    <p class="added-by"></p>
+    <p class="creation-date"></p>
+    <p class="description"></p>
+    <h5>תומכים</h5>
+    <p class="followers"></p>
+    <div class="buttons" style="position: absolute; bottom: 0">
+        <button class="btn btn-success follow-button">תמוך בנקודה זו</button>
+        <button class="btn btn-danger unfollow-button" style="display: none">הפסק תמיכה</button>
+        <button class="btn btn-primary share-button">שתף</button>
+        <button class="btn btn-danger delete-button" style="display: none">מחק</button>
+    </div>
+
+</div>
+<div id="list-entry" style="display: none">
+    <li><a>
+        <span class="type"></span> - <span class="text"></span>
+    </a></li>
+</div>
+<div id="sidebar-template" style="display: none">
+    <div class="sidebar-title">סנן לפי שכבה</div>
+    <ul>
+        <li><input type="checkbox" data-type="1" checked/> הראה תאונות קטלניות</li>
+        <li><input type="checkbox" data-type="2" checked/> הראה תאונות קשות</li>
+        <li><input type="checkbox" data-type="3" checked/> הראה תאונות קלות</li>
+
+    </ul>
+    <div class="sidebar-title">סנן לפי טווח תאריכים</div>
+    <ul>
+        <li>
+            <div class="input-prepend" id="calendar-control">
+                <span class="add-on"><i class="icon-calendar date-range"></i></span>< input type="text" class="date-range" style="width: 200px"/>
+            </div>
+
+        </li>
+
+    </ul>
+    <div class="sidebar-title">הצעות נוכחיות</div>
+    <ul class="current-view"></ul>
+
+</div>
+<div id="fb-root"></div>
+<script>
+    {% if coordinates %}
+    MARKER_SPECIFIED = true;
+    MARKER_LATITUDE = {{coordinates[0]}};
+    MARKER_LONGITUDE = {{coordinates[1]}};
+    {% else %}
+    MARKER_SPECIFIED = false;
+    {% endif %}
+    
+
+    {% if marker %}
+    MARKER_ID = {{marker}};
+    {% else %}
+    MARKER_ID = null;
+    {% endif %}
+    moment.lang('he');
+    window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '157028231131213', // App ID
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            xfbml      : true  // parse XFBML
+          });
+            window.app = new AppView();
+            window.app.render();
+            if (MARKER_ID) {
+                console.log('setting marker');
+                app.model.set("currentMarker", MARKER_ID);
+            }
+        };
+        // Load the SDK Asynchronously
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/all.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48606400-1', 'anyway.herokuapp.com');
+  ga('send', 'pageview');
+  console.log('get coordinates: {{ coordinates }}')
+</script>
+</body>
+
+</html>
