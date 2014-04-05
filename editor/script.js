@@ -37,6 +37,9 @@ App.controller('eKnightEditor', function($scope, $http) {
         $scope.list[$scope.index].repositories.splice(indexToRemove, 1);
     };
     $scope.addRepository = function() {
+        if ($scope.list[$scope.index].repositories === undefined)
+            $scope.list[$scope.index].repositories = new Array();
+
         $scope.list[$scope.index].repositories.push({
             "name": "",
             "url": "",

@@ -8,7 +8,20 @@ var eKnightsData = [{
     "slug": "open-knesset",
     "discussion_board": "https://groups.google.com/forum/#!forum/open-knesset",
     "github_repo": "https://github.com/hasadna/Open-Knesset",
-    "leaders": ["ofri", "MeirKriheli", "amirnissim"]
+    "leaders": ["ofri", "MeirKriheli", "amirnissim"],
+    "repositories": [{
+        "name": "כנסת פתוחה",
+        "url": "https://github.com/hasadna/Open-Knesset",
+        "about": ""
+    }, {
+        "name": "Open Knesset Web Application",
+        "url": "https://github.com/hasadna/ok-web",
+        "about": ""
+    }, {
+        "name": "Open-Knesset-Mobile",
+        "url": "https://github.com/hasadna/Open-Knesset-Mobile",
+        "about": ""
+    }]
 }, {
     "name": "קהילה פתוחה",
     "permalink": "http://opencommunity.org.il",
