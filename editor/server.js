@@ -18,6 +18,7 @@ function server(request, response) {
             var txt = JSON.stringify(obj);
 
             var prettyData = beautify(txt, {indent_size: 4});
+
             var fileContents = "var eKnightsData = "
                     + prettyData
                     + ';\n'

@@ -19,7 +19,7 @@ App.config(function($routeProvider) {
 
     $routeProvider.when('/:eKnight/piChart', {
         controller: 'piChartCtrl',
-        templateUrl: 'piVisualization/index.html',
+        templateUrl: 'visualizations/piVisualization/index.html',
         caseInsensitiveMatch: true
     });
     $routeProvider.when('/all-issues', {
