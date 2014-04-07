@@ -1,9 +1,4 @@
 'use strict';
-// https://api.github.com/repos/hasadna/Open-Knesset/tags
-// https://api.github.com/repos/hasadna/Open-Knesset/branches
-// https://api.github.com/repos/hasadna/Open-Knesset/languages
-// https://api.github.com/repos/hasadna/Open-Knesset/contributors
-// https://api.github.com/repos/hasadna/Open-Knesset/commits
 
 var App = angular.module('App', [
     'ngResource', 'ngRoute', 'ngSanitize', 'ui.utils', 'App.filters',
