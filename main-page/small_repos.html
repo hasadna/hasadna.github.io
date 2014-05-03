@@ -1,0 +1,12 @@
+
+
+<div id="small-repos-title">
+    <h1>המעבדה</h1>
+    <h2>קוד שאנחנו משתמשים בו, פרויקטים קטנים וכל מני</h2>
+</div>
+<div id="small-repos-inner-wrp">
+    <p ng-repeat="sr in small_repos" class="small-repo">
+        <a href="{{sr.url}}">{{sr.name}}<i class="fa fa-external-link"></i></a>
+        <span>{{sr.description}}</span>
+    </p>
+</div>

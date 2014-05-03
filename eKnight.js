@@ -12,7 +12,7 @@ App.filter('trust', function($sce) {
  * @param {type} param1
  * @param {type} param2
  */
-App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieChartService, arrayUtill, $http, $routeParams) {
+App.controller('eKnightCtrl', function($scope, HebUtill, issuesLoader, commentsHandler, pieChartService, arrayUtill, $http, $routeParams) {
 
     $scope.pieChartService = pieChartService;
 
@@ -23,7 +23,7 @@ App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieCha
     };
 
     $scope.eKnight = _.filter(eKnightsData, function(eKnight) {
-        return eKnight.slug === $routeParams.eKnight; //$sce.trustAsResourceUrl($routeParams.eKnight);
+        return eKnight.slug === $routeParams.eKnight;
     });
 
     if ($scope.eKnight.length !== 0) {// TODO: 404
@@ -32,29 +32,16 @@ App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieCha
 
     document.title = $scope.eKnight.name;
 
-    var http_request = $http({
-        method: 'GET',
-        url: $scope.eKnight.issuesUrl
-    });
 
 
-    //http_request.error(function(data, status, headers, config) {});
-    http_request.success(function(data, status, headers, config) {
-        var labels = new Array();
+    issuesLoader.load($scope.eKnight.repositories, function(data, labels) {
 
-        commentsHandler.treatComments(data);// Add title/body_lang  attribute  with hebrew Or english values - for text alignment.
 
-        for (var i = 0; i < data.length; i++) { // Collect the labels
-            data[i].textLimit = 30;
-            for (var j = 0; j < data[i].labels.length; j++) {
-                labels.push(data[i].labels[j]);
-            }
-        }
+
 
         $scope.issues = data;
 
-        // Count labels and remove duplicates
-        $scope.labels = arrayUtill.clusterNcount(labels, 'name');
+        $scope.labels = labels;
 
 
         $scope.updateState = function() {
@@ -111,9 +98,7 @@ App.controller('eKnightCtrl', function($scope, HebUtill, commentsHandler, pieCha
         };
 
         $scope.readMore = function(evt, issue) {
-//            if (issue.body.trim().length < 0)
-                issue.textLimit = 1000000;
+            issue.textLimit = 1000000;
         };
-
     });
 });

@@ -2,7 +2,7 @@
 
 var App = angular.module('App', [
     'ngResource', 'ngRoute', 'ngSanitize', 'ui.utils', 'App.filters',
-    'HebUtill', 'commentsHandler', 'arrayUtill', 'checkboxesFilter'
+    'HebUtill', 'commentsHandler', 'arrayUtill', 'checkboxesFilter','issuesLoader'
 ]);
 
 
