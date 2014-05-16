@@ -13,6 +13,7 @@
         <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
         <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-resource.min.js"></script>
         <script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.min.js"></script>
+        <script type="application/javascript" src="ngBooleanRadio.js"></script>
         <script type="application/javascript" src="script.js"></script>
     </head>
 
@@ -145,6 +146,20 @@
                                         <div class="controls col-sm-10">
                                             <textarea ng-model="repository.about" class="form-control" rows="3"></textarea>
                                             <p class="help-block">מה המטרה של ה repository </p>
+                                        </div>
+
+                                        <label class="col-sm-2 control-label"></label>
+                                        <div class="controls col-sm-10">
+                                            <label class="radio">
+                                                <input type="radio"
+                                                       name="isMain"
+                                                       ng-model="repository.main"
+                                                       value="true"
+                                                       ng-required="true"
+                                                       ng-boolean-radio>
+                                                ראשי
+                                            </label>
+                                            <p class="help-block"> </p>
                                         </div>
 
                                         <button ng-click="removeRepository(repository)" type="button" class="pull-right  btn btn-danger"><span class="glyphicon glyphicon-remove"></span> מחיקת  הrepository</button>

@@ -4,8 +4,7 @@ var App = angular.module('App', [
     'ngResource', 'ngRoute'
 
 ]);
-
-
+App.directive('ngBooleanRadio', ngBooleanRadio);
 
 /***
  * 
@@ -18,6 +17,12 @@ App.controller('eKnightEditor', function($scope, $http) {
 
     $scope.index = 0;
     $scope.list = eKnightsData;
+
+    for (var i = 0; i < $scope.list.length; i++) {
+        for (var j = 0; j < $scope.list[i].repositories.length; j++) {
+//            $scope.list[i].repositories[j].main = false;
+        }
+    }
     $scope.next = function() {
         if ($scope.index < $scope.list.length - 1)
             $scope.index++;
@@ -31,6 +36,12 @@ App.controller('eKnightEditor', function($scope, $http) {
     };
     $scope.hideDialog = function() {
         $scope.showDialog = false;
+    };
+    $scope.setMainRapoForEknight = function(eKnight, chosenOne) {
+        angular.forEach(eKnight.repositories, function(repo) {
+            repo.main = false;
+        });
+        chosenOne.main = true;
     };
     $scope.removeRepository = function(repository) {
         var indexToRemove = $scope.list[$scope.index].repositories.indexOf(repository);
