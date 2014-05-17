@@ -1,0 +1,17 @@
+# Test and backup files
+test*
+*~
+*.bak
+*.rar
+
+# Credentials
+wiki_credentials.txt
+wiki_botconf.txt
+.mediawiki*
+
+# Various project files
+.settings
+.project
+
+build/node_modules
+

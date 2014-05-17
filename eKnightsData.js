@@ -216,7 +216,7 @@ var eKnightsData = [{
                 "name": "Open Pension Client",
                 "url": "https://github.com/hasadna/OpenPension-client",
                 "about": "the client for the Open Pension Project",
-                "main": true
+                "main": false
             }, {
                 "name": "פנסיה פתוחה",
                 "url": "https://github.com/hasadna/OpenPension",

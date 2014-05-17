@@ -1,13 +1,12 @@
 var fs = require('fs');
 var path = require('path');
-//var util = require('util');
 var posix = require('posix');
 //var colors = require('colors');
-var rootChecker = require('rootChecker');
-var lnCounter = require('lineCounter').createLineCounter();
-var github = require('github');
-var repositoriesData = require('../eKnightsData').eKnightsData;
-var index = repositoriesData.length - 1;
+var rootChecker = require('./rootChecker');
+var lnCounter = require('./lineCounter').createLineCounter();
+var github = require('./github');
+var eKnights = require('./repositories').repositories;
+var index = eKnights.length - 1;
 
 rootChecker.isRootUser(function() {
     /**
@@ -19,6 +18,7 @@ rootChecker.isRootUser(function() {
      */
     posix.setrlimit('nofile', {soft: 100000, hard: 100000});
 });
+
 /**
  * @param {string} filename Full path of file
  * @returns 
@@ -77,7 +77,7 @@ var mapData = function(folderToMap, cb) {
 
     var obj = dirTree(__dirname + "/repositories/" + folderToMap);
     var fileWriter = function() {
-        fs.writeFile("../data/" + repositoriesData[index].slug + "-pi.json", JSON.stringify(obj), function(err) {
+        fs.writeFile("../data/" + eKnights[index].slug + "-pi.json", JSON.stringify(obj), function(err) {
             cb(--index);
             if (err)
                 console.log(err);
@@ -94,18 +94,17 @@ var mapData = function(folderToMap, cb) {
 var repositoriesPath = __dirname + "/repositories/";
 
 
-
 function main() {
     if (index !== -1) {
-//        console.log('i: ' + index);
-        var folderName = github.getFolderName(repositoriesData[index].github_repo);
-        github.setDotGitPath(repositoriesPath + folderName + '/.git');
-        github.cloneOrPull(repositoriesData[index].github_repo + '.git', function() {
+        var folderName = eKnights[index].getMainRepository().getFolderName();
+        var dotGitFolder = eKnights[index].getMainRepository().getDotGitFolder();
+        github.setDotGitPath(dotGitFolder);
+
+        github.cloneOrPull(repositoriesPath + folderName, function() {
             mapData(folderName, main);
         }, true);
     }
 }
 
 main();
-
 

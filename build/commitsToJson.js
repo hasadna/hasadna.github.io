@@ -3,8 +3,8 @@ var spawn = require('child_process').spawn;
 var colors = require('colors');
 
 /**
- * @description Get commits for path in array. 
- * @param {string} path of file to get its log.
+ * @description Get JSON array of commits for path in array. 
+ * @param {Repository} repo of file to get its log.
  * @param {Function} callBack to run with the result.
  * The result look like this: 
  * [{
@@ -15,13 +15,12 @@ var colors = require('colors');
  * ]
  * @returns {void}
  */
-function commitsArray(path, callBack) {
-    if (path === '')
-        throw new Error('\ngit-dir must be set.\nUse setGitDir to set it.'.red);
+function commitsArray(repo, callBack) {
+
     var result = '';
     var separator = ' qqqqqqqq ';
     var args = [
-        '--git-dir=' + path
+        '--git-dir=' + repo.getDotGitFolder()
                 , "log"
                 , "--pretty=format:%H" //  commit hash
                 + separator + "%an" //  author name
@@ -68,14 +67,14 @@ function commitsArray(path, callBack) {
             /**
              * @type {Array}
              */
-            var json = JSON.parse(jsonStr);
+            var jsonArray = JSON.parse(jsonStr);
         }
         catch (e) {
 //            debugger;
             console.log(e.toString().red);
             console.log(jsonStr.red);
         }
-        callBack(json);
+        callBack(jsonArray, repo);
     });
     process.stderr.on('data', function(data) {
         var buff = new Buffer(data);

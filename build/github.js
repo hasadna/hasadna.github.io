@@ -1,8 +1,9 @@
+"use strict";
 var spawn = require('child_process').spawn;
 var colors = require('colors');
 var fs = require('fs');
 var path = require('path');
-var jsonSanitizer = require('jsonSanitizer');
+var jsonSanitizer = require('./jsonSanitizer');
 
 
 /**
@@ -75,7 +76,7 @@ parentPath = findParentPath(parentPath);
  */
 var getFolderName = function(str) {
     var lastSlash = str.lastIndexOf("/");
-    var end = str.length - 4;
+    var end = str.length;
     if (str.indexOf('.git') === -1)
         end = str.length;
 
@@ -95,15 +96,18 @@ var cloneOrPull = function(repoURL, callBack, verbose) {
     var clone = false;
     var gitFolder = '--git-dir=' + parentPath + '/repositories/' + containingFolder + '/.git';
 
-    if (path.existsSync(parentPath + '/repositories/' + containingFolder)) // If repository exist pull it, otherwise clone it.
+    if (fs.existsSync(parentPath + '/repositories/' + containingFolder)) // If repository exist pull it, otherwise clone it.
         var process = spawn('git', [gitFolder, 'pull']);
     else {
         var process = spawn('git', ['clone', repoURL]);
         clone = true;
     }
+
     process.on('exit', function(code) { // When exit run the callback.
         if (clone === true) {
-            fs.renameSync(parentPath + '/' + containingFolder, parentPath + '/repositories/' + containingFolder);
+            var src = parentPath + '/' + containingFolder;
+            var des = parentPath + '/repositories/' + containingFolder;
+            fs.renameSync(src, des);
             console.log(containingFolder + ' moved from: \n' + parentPath + '\nTo:\n' + parentPath + '/repositories/');
         }
         callBack(code, containingFolder);
@@ -158,6 +162,11 @@ var getLogForFile = function(fullPath, callBack) {
     var result = '';
     var separator = ' qqqqqqqq ';
 
+    var relativePath = getRelativePath(fullPath);
+    if (relativePath === "")
+        relativePath = containingFolder + '/';
+//    console.log("fullPath: " + fullPath);
+
     var args = new Array(
             '--git-dir=' + dotGitPath,
             "log",
@@ -168,7 +177,7 @@ var getLogForFile = function(fullPath, callBack) {
             + "%f" + separator // sanitized subject line, suitable for a filename
             + "%b", // body
             "--",
-            getRelativePath(fullPath)
+            fullPath
             );
 
     lock++;
@@ -201,10 +210,13 @@ var getLogForFile = function(fullPath, callBack) {
                     + '"},';
         }
 
-        jsonStr = jsonStr.substring(0, jsonStr.length - 1) + ']'; // Remove the last comma
+        jsonStr = jsonStr.substring(0, jsonStr.length - 1)  // Remove the last comma
+                + "]";
+
+        if (jsonStr === "]") // For no data
+            jsonStr = "[]";
 
         var json = JSON.parse(jsonStr);
-
 
         callBack(json);
         lock--;
@@ -224,3 +236,4 @@ module.exports.setDotGitPath = setDotGitPath;
 module.exports.cloneOrPull = cloneOrPull;
 module.exports.getLogForFile = getLogForFile;
 module.exports.getFolderName = getFolderName;
+
