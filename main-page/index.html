@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="eknights">
-        <article ng-repeat="eKnight in eKnights" class="eKnight">
+        <article ng-repeat="eKnight in (eKnights|orderBy:'lastUpdate':true|emptyToEnd:'lastUpdate')" class="eKnight">
             <h3>{{eKnight.name}}</h3>
             <p>{{eKnight.about}}</p>
             <ul class="status-list">
@@ -35,6 +35,7 @@
                 <li>
                     <strong>רמת כניסה: </strong> {{eKnight.status}}
                 </li>
+                <li title="{{eKnight.lastUpdate| date:'בdd לM yyyy בשעה HH:mm'}}">התעדכן לאחרונה {{eKnight.lastUpdate|hebTimeAgo}}</li>
             </ul>
 
             <div class="button-bar">
