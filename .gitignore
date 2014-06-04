@@ -1,5 +1,5 @@
-build/repositories/
-build/node_modules/
+update/repositories/
+update/node_modules/
 doc/
 node_modules/
 
