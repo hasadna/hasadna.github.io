@@ -122,10 +122,14 @@
 .what-is-eKnight .page-header{
     background: #fcd04b;
 }
-.content {
+.float-pnl .content {
     max-width: 780px;
     margin-left: auto;
     margin-right: auto;
+
+    height: calc(100vh - 11rem);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 
