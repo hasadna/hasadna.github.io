@@ -1,5 +1,7 @@
 build/repositories/
 build/node_modules/
+doc/
+node_modules/
 
 # ignore backups
 *~
