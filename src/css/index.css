@@ -128,7 +128,7 @@
     margin-right: auto;
 
     height: calc(100vh - 11rem);
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
