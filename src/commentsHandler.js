@@ -24,7 +24,7 @@ angular.module('commentsHandler', ['HebUtill'
         /**
          * @description Format a JavaScript Date as a string stating the time elapsed.
          * @param {string} dateText Unix time format.
-         * @returns {String}
+         * @returns {string}
          */
         this.timeSince = function(dateText) {
             var date = new Date(dateText);

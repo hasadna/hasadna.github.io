@@ -7,12 +7,14 @@ App.filter('trust', function($sce) {
 });
 
 
-/***
+/**
  * 
  * @param {type} param1
  * @param {type} param2
  */
-App.controller('eKnightCtrl', function($scope, HebUtill, issuesLoader, commentsHandler, pieChartService, arrayUtill, $http, $routeParams) {
+App.controller('eKnightCtrl', function($scope, HebUtill, issuesLoader, $window, commentsHandler, pieChartService, arrayUtill, $http, $routeParams) {
+
+    $scope.relativizePath = $window.CONFIG.relativizePath;
 
     $scope.pieChartService = pieChartService;
 
@@ -26,7 +28,7 @@ App.controller('eKnightCtrl', function($scope, HebUtill, issuesLoader, commentsH
         return eKnight.slug === $routeParams.eKnight;
     });
 
-    if ($scope.eKnight.length !== 0) {// TODO: 404
+    if ($scope.eKnight.length !== 0){// TODO: 404
     }
     $scope.eKnight = $scope.eKnight[0];
 
@@ -76,7 +78,7 @@ App.controller('eKnightCtrl', function($scope, HebUtill, issuesLoader, commentsH
                 var comments_list = new Array();
 
                 function loadComments(i) {
-                    if (i === -1) {
+                    if (i === - 1){
                         commentsHandler.treatComments(comments_list);
                         //  window.console.clear();
                         // window.console.log(JSON.stringify(comments_list));
@@ -89,7 +91,7 @@ App.controller('eKnightCtrl', function($scope, HebUtill, issuesLoader, commentsH
                     });
                     comment_request.success(function(comment, status, headers, config) {
                         comments_list.push(comment);
-                        i--;
+                        i --;
                         loadComments(i);
                     });
                 }

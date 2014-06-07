@@ -1,0 +1,38 @@
+
+<header class="app-header">
+    <div class="app-header-title">
+        <h1>{{eKnight.name}}</h1>
+        <h2>{{eKnight.about}}</h2>
+    </div>
+
+    <div class="quick-link-row">
+        <div class="box-quick-link green-background">
+            <a href="{{eKnight.permalink}}">
+                <div class="box-header">
+                    <div class="icon-comments">
+                        <i class="fa fa-link"></i> 
+                    </div>
+                </div>
+                <div class="box-title">לינק</div>
+            </a>
+        </div>
+        <div class="box-quick-link blue-background">
+            <a href="{{eKnight.github_repo}}">
+                <div class="box-header">
+                    <div class="icon-comments">
+                        <i class="fa fa-github"></i>
+                    </div>
+                </div>
+                <div class="box-title">github</div>
+            </a>
+        </div>
+        <div class="box-quick-link orange-background">
+            <a href="#/{{eKnight.slug}}/piChart">
+                <div class="box-header">
+                    <i class="fa">◵</i>
+                </div>
+                <div class="box-title">דיאגרמת קבצים</div>
+            </a>
+        </div>
+    </div>
+</header>

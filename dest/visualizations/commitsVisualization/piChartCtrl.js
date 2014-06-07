@@ -1,0 +1,1 @@
+App.controller("commitsChartCtrl",function($scope,$routeParams){$scope.eKnight=_.filter(eKnightsData,function(eKnight){return eKnight.slug===$routeParams.eKnight})});

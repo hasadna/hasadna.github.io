@@ -1,12 +1,12 @@
-App.service('pieChartService', function($rootScope, $http) {
+App.service('pieChartService', function($rootScope, $http, $window) {
     var cache = null;
 
     this.getJSON = function(eKnight, cb) {
-        if (cache !== null) {
+        if (cache !== null){
             cb(cache);
             return;
         }
-        var req = $http.get('data/' + eKnight.slug + '-pi.json');
+        var req = $http.get($window.CONFIG.PATH + 'data/' + eKnight.slug + '-pi.json');
         req.success(function(data, status, headers, config) {
             cache = data;
             cb(data);

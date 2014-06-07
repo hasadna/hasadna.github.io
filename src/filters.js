@@ -2,7 +2,7 @@
 angular.module('App.filters', []).filter('githubTagsFilter', [
     function() {
 
-        /***
+        /**
          * @description Filter issues by labels.
          * @param {Array<Object>} issues
          * @param {Array<string>} selectedLabels

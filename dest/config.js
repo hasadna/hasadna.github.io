@@ -1,0 +1,1 @@
+var CONFIG = {PATH: "dest/",relativizePath: function(oldPath) {return CONFIG.PATH + oldPath;}};

@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="App">
+  <head>
+    <title>eKnights</title>
+    <meta charset="utf-8">
+    <!-- start template css -->
+    <link rel="stylesheet" type="text/css" href="dest/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="dest/css/Alef-Webfont/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="dest/css/font-awesome-4.0.3/css/font-awesome.min.css" />
+    <!-- end template css -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <!-- endbower -->
+    <!-- start template js -->
+    <script src="dest/eKnightsData.js"></script>
+    <script src="dest/small_repos.js"></script>
+    <script src="dest/config.js"></script>
+    <script src="dest/hebUtill.js"></script>
+    <script src="dest/commentsHandler.js"></script>
+    <script src="dest/filters.js"></script>
+    <script src="dest/arrayUtill.js"></script>
+    <script src="dest/issuesLoader.js"></script>
+    <script src="dest/main.js"></script>
+    <script src="dest/visualizations/piVisualization/pieChartService.js"></script>
+    <script src="dest/visualizations/piVisualization/ghPiVisualization.js"></script>
+    <script src="dest/visualizations/piVisualization/piChartCtrl.js"></script>
+    <script src="dest/all-issues/allIssuesCtrl.js"></script>
+    <script src="dest/eKnight.js"></script>
+    <script src="update/Repository.js"></script>
+    <script src="dest/main-page/index.js"></script>
+    <!-- end template js -->
+    <link rel="shortcut icon" href="dest/css/favicon.ico">
+  </head>
+  <body>
+    <div ng-view="">
+    </div>
+  </body>
+</html>
