@@ -1,6 +1,4 @@
-
-update/repositories/
-update/repositories/*
+update/repositories
 update/node_modules/
 doc/
 node_modules/
