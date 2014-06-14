@@ -25,36 +25,21 @@
         </div>
     </div>
     <div class="eknights">
-        <article ng-repeat="eKnight in (eKnights|orderBy:'lastUpdate':true|emptyToEnd:'lastUpdate')" class="eKnight">
-            <h3>{{eKnight.name}}</h3>
-            <p>{{eKnight.about}}</p>
-            <ul class="status-list">
-                <li>
-                    <strong>סטטוס: </strong> {{eKnight.status}}
-                </li>
-                <li>
-                    <strong>רמת כניסה: </strong> {{eKnight.status}}
-                </li>
-                <li title="{{eKnight.lastUpdate| date:'בdd לM yyyy בשעה HH:mm'}}">התעדכן לאחרונה {{eKnight.lastUpdate|hebTimeAgo}}</li>
-            </ul>
-
-            <div class="button-bar">
-                <a class="btn" href="{{eKnight.permalink}}">
-                    <span class="btn-icon fa fa-home"></span>
-                    <span class="btn-text">עמוד הבית</span>
-                </a>
-                <a class="btn" href="#/{{eKnight.slug}}" >
-                    <span class="btn-icon fa fa-comments-o"></span>
-                    <span class="btn-text">עמוד החשמביר</span>
-                </a>
-                <a class="btn" href="{{eKnight.github_repo}}">
-                    <span class="btn-icon fa fa-github"></span>
-                    <span class="btn-text">גיטהאב</span>
-                </a>
-            </div>
+        <article ng-repeat="eKnight in (eKnights|orderBy:'lastUpdate':true|emptyToEnd:'lastUpdate'|ageGroup:true)"
+                 class="eKnight"
+                 data-ng-include="relativizePath('main-page/eKnight.html')">
         </article>
     </div>
 
+    <div class="old-eknights-warp" ng-if="oldReposExists == true">
+        <h2>לא התעדכן כבר מלא זמן:</h2>
+        <div class="eknights">
+            <article ng-repeat="eKnight in (eKnights|orderBy:'lastUpdate':true|emptyToEnd:'lastUpdate'|ageGroup:false)"
+                     class="eKnight"
+                     data-ng-include="relativizePath('main-page/eKnight.html')">
+            </article>
+        </div>
+    </div>
 </div>
 
 <div id="small-repos-warp" ng-include="relativizePath('main-page/small_repos.html')"></div>

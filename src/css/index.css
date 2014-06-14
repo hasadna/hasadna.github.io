@@ -152,7 +152,15 @@
     margin: 0 auto;
     max-width: 768px;
 }
-
+.old-eknights-warp{}
+.old-eknights-warp h2{
+    direction: rtl;
+    font-weight: 100;
+    border-top: 2px #212123 dashed;
+    padding: 0px 17px 0px 0px;
+    margin: 1em 0px 0px 0px;
+    color: #212123;
+}
 .eKnight {
     box-shadow: 0px 3px 2px #aab2bd;
     direction: rtl;

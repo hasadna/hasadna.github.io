@@ -4,8 +4,9 @@
  * @param {Object} $scope  See <a href="https://docs.angularjs.org/guide/scope">What are Scopes?</a>
  * @param {Object} $window A reference to the browser's window object. See <a href="https://docs.angularjs.org/api/ng/service/$window">$window</a>
  * @param {Object} $http service. See: <a href="https://docs.angularjs.org/api/ng/service/$http">$http</a>
+ * @param {Object} timeUtill 
  */
-function indexCtrl($scope, $window, $http) {
+function indexCtrl($scope, $window, $http, timeUtill) {
     $scope.relativizePath = $window.CONFIG.relativizePath;
 
     var unknownLastUpdate = [];
@@ -30,7 +31,7 @@ function indexCtrl($scope, $window, $http) {
             for (var i = 0; i < updatedData.length; i++) {
                 if (updatedData[i].html_url.toLowerCase() === url) {
                     eKnight.lastUpdate = updatedData[i].pushed_at;
-                   //break;
+                    //break;
                 }
             }
             if (!eKnight.lastUpdate)
@@ -58,6 +59,16 @@ function indexCtrl($scope, $window, $http) {
                 updateByRepoUrl(--index);
             }
             updateByRepoUrl(index);
+
+            $scope.oldReposExists = false;
+            var today = new Date();
+            var threeMonthsInDays = 90; // = 3*30
+            $scope.eKnights.forEach(function(eKnight) {
+//                console.log(new Date(eKnight.lastUpdate));
+                var diff = timeUtill.dayDiff(new Date(eKnight.lastUpdate), today);
+                if (diff > threeMonthsInDays)
+                    $scope.oldReposExists = true;
+            });
         }
         $scope.small_repos = $window.small_repos;
     }
@@ -66,7 +77,7 @@ function indexCtrl($scope, $window, $http) {
         method: 'GET',
         url: 'https://api.github.com/orgs/hasadna/repos?type=all'
     });
-    
+
     // When the request success - call addLastUpdateProperty function
     request.success(addLastUpdateProperty);
 }

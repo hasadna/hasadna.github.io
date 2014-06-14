@@ -1,3 +1,61 @@
+
+angular.module('timeUtill', []).factory('timeUtill', function() {
+
+    /**
+     * @constructor
+     */
+    function timeUtill() {
+        /**
+         * @description  Finds how many full days lie between two dates.
+         * @param {Date} firstDate
+         * @param {Date} secondDate
+         * @returns {Number}
+         */
+        this.dayDiff = function(firstDate, secondDate) {
+            var timeDiff = Math.abs(firstDate.getTime() - secondDate.getTime());
+            return Math.ceil(timeDiff / (1000 * 3600 * 24));
+        };
+    }
+    return new timeUtill();
+});
+
+/**
+ * @description 
+ * @param {Object} timeUtill module
+ */
+App.filter("ageGroup", function ageGroup(timeUtill) {
+    var today = new Date();
+    var threeMonthsInDays = 90; // = 3*30
+
+    /** 
+     * @description If key is true return all the eKnights which updated in the last 3 months.
+     * If key is false return all the eKnights which not updated in the last 3 months.
+     * @param {Array} array Of eKnights to filter.
+     * @param {boolean} key
+     */
+    return function(array, key) {
+        if (!angular.isArray(array))
+            return;
+        function filterFunc(eKnight) {
+            var lastUpdate = new Date(eKnight.lastUpdate);
+            var diff = timeUtill.dayDiff(lastUpdate, today);
+
+            if (key === true)
+                if (diff > threeMonthsInDays)
+                    return false;
+                else
+                    return true;
+            if (key === false) // AKA else
+                if (diff < threeMonthsInDays)
+                    return false;
+                else
+                    return true;
+        }
+
+        var filteredArr = array.filter(filterFunc);
+        return filteredArr;
+    };
+});
 /**
  * @description Filter that takes items with empty name from ordered array and
  * places them at the end.
@@ -19,10 +77,9 @@ App.filter("emptyToEnd", function emptyToEnd() {
         return present.concat(empty);
     };
 });
-
 /**
- *@description Format a JavaScript Date as a string stating the time elapsed
- *@see http://stackoverflow.com/questions/3177836/how-to-format-time-since-xxx-e-g-4-minutes-ago-similar-to-stack-exchange-site
+ * @description Format a JavaScript Date as a string stating the time elapsed
+ * @see http://stackoverflow.com/questions/3177836/how-to-format-time-since-xxx-e-g-4-minutes-ago-similar-to-stack-exchange-site
  */
 App.filter('hebTimeAgo', function timeAgo() {
     /**
