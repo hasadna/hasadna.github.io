@@ -38,6 +38,28 @@ function indexCtrl($scope, $window, $http, timeUtill) {
                 unknownLastUpdate.push(eKnight);
         }); //End eKnights.forEach
 
+
+        $scope.small_repos = $window.small_repos;
+
+
+
+        //for (var i = 0; i < updatedData.length; i++) {window.console.log(updatedData[i].html_url);}
+
+        $scope.small_repos.forEach(function(smallRepo) {
+            var url = smallRepo.url.toLowerCase();
+            for (var i = 0; i < updatedData.length; i++) {
+                if (updatedData[i].html_url.toLowerCase() === url) {
+                    smallRepo.lastUpdate = updatedData[i].pushed_at;
+                    //break;
+                }
+            }
+            if (!smallRepo.lastUpdate) {
+                smallRepo.mainRepo = new Repository(smallRepo);
+                unknownLastUpdate.push(smallRepo);
+//                window.console.log("\t\t" + smallRepo.url);
+            }
+        });
+
         if (unknownLastUpdate.length !== 0) {
             var index = unknownLastUpdate.length - 1;
 
@@ -64,13 +86,11 @@ function indexCtrl($scope, $window, $http, timeUtill) {
             var today = new Date();
             var threeMonthsInDays = 90; // = 3*30
             $scope.eKnights.forEach(function(eKnight) {
-//                console.log(new Date(eKnight.lastUpdate));
                 var diff = timeUtill.dayDiff(new Date(eKnight.lastUpdate), today);
                 if (diff > threeMonthsInDays)
                     $scope.oldReposExists = true;
             });
         }
-        $scope.small_repos = $window.small_repos;
     }
 
     var request = $http({
