@@ -98,7 +98,7 @@ module.exports = function(grunt) {
         },
         tags: { // Inject the minifyed JavaScript and css to index.html
             injectJavaScript: {
-                src: ['dest/eKnightsData.js', 'dest/small_repos.js', 'dest/config.js', 'dest/hebUtill.js', 'dest/commentsHandler.js', 'dest/filters.js', 'dest/arrayUtill.js', 'dest/issuesLoader.js', 'dest/main.js', 'dest/visualizations/piVisualization/pieChartService.js', 'dest/visualizations/piVisualization/ghPiVisualization.js', 'dest/visualizations/piVisualization/piChartCtrl.js', 'dest/all-issues/allIssuesCtrl.js', 'dest/eKnight.js', 'update/Repository.js', 'dest/main-page/index.js'],
+                src: ['dest/eKnightsData.js', 'dest/small_repos.js', 'dest/config.js', 'dest/hebUtill.js', 'dest/commentsHandler.js', 'dest/filters.js', 'dest/arrayUtill.js', 'dest/issuesLoader.js', 'dest/main.js', 'dest/visualizations/piVisualization/pieChartService.js', 'dest/visualizations/piVisualization/ghPiVisualization.js', 'dest/visualizations/piVisualization/piChartCtrl.js', 'dest/all-issues/allIssuesCtrl.js', 'dest/eKnight.js', 'update/Repository.js', 'dest/main-page/filters.js', 'dest/main-page/index.js'],
                 options: {
                     scriptTemplate: '<script src="{{ path }}"></script>',
                     openTag: '<!-- start template js -->',
