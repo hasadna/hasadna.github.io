@@ -8,6 +8,6 @@
     <p ng-repeat="sr in (small_repos|orderBy:'lastUpdate':true)" class="small-repo">
         <a href="{{sr.url}}">{{sr.name}}<i class="fa fa-external-link"></i></a>
         <span>{{sr.description}}</span>
-        <span class="last-update">Last Update at {{sr.lastUpdate| date:'dd/M/yyyy'}}</span>
+        <span class="last-update">Last update at {{sr.lastUpdate| date:'dd/M/yyyy'}}</span>
     </p>
 </div>
