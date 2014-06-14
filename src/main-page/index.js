@@ -41,10 +41,7 @@ function indexCtrl($scope, $window, $http, timeUtill) {
 
         $scope.small_repos = $window.small_repos;
 
-
-
-        //for (var i = 0; i < updatedData.length; i++) {window.console.log(updatedData[i].html_url);}
-
+        //Add lastUpdate property to small repos
         $scope.small_repos.forEach(function(smallRepo) {
             var url = smallRepo.url.toLowerCase();
             for (var i = 0; i < updatedData.length; i++) {
@@ -56,13 +53,11 @@ function indexCtrl($scope, $window, $http, timeUtill) {
             if (!smallRepo.lastUpdate) {
                 smallRepo.mainRepo = new Repository(smallRepo);
                 unknownLastUpdate.push(smallRepo);
-//                window.console.log("\t\t" + smallRepo.url);
             }
         });
 
         if (unknownLastUpdate.length !== 0) {
             var index = unknownLastUpdate.length - 1;
-
             /**
              * @description Set the lastUpdate property by github API URL of the mainRepo.
              * @param {number} i index of unknownLastUpdate array to work on
