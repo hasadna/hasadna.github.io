@@ -8,7 +8,8 @@ App.filter("emptyToEnd", function emptyToEnd() {
      * @param {string} key
      */
     return function(array, key) {
-        if (!angular.isArray(array)) return;
+        if (!angular.isArray(array))
+            return;
         var present = array.filter(function(item) {
             return item[key];
         });
@@ -18,17 +19,19 @@ App.filter("emptyToEnd", function emptyToEnd() {
         return present.concat(empty);
     };
 });
-/***
+
+/**
  *@description Format a JavaScript Date as a string stating the time elapsed
  *@see http://stackoverflow.com/questions/3177836/how-to-format-time-since-xxx-e-g-4-minutes-ago-similar-to-stack-exchange-site
  */
-App.filter('hebTimeAgo', function() {
+App.filter('hebTimeAgo', function timeAgo() {
     /**
      * @param {Dtae|null|undefined} time 
      * @return {string} 
      */
     return function(time) {
-        if (typeof time === 'undefined') return 'לא ידוע';
+        if (typeof time === 'undefined')
+            return 'לא ידוע';
         time = +new Date(time);
         var time_formats = [
             [60, 'שניות', 1], // 60
@@ -44,13 +47,14 @@ App.filter('hebTimeAgo', function() {
             [29030400, 'חודשים', 2419200], // 60*60*24*7*4*12, 60*60*24*7*4
             [58060800, 'לפני שנה', 'בשנה הבאה'], // 60*60*24*7*4*12*2
             [2903040000, 'שנים', 29030400] // 60*60*24*7*4*12*100, 60*60*24*7*4*12
-            //[5806080000, 'Last century', 'Next century'], // 60*60*24*7*4*12*100*2
-            //[58060800000, 'centuries', 2903040000] // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
-            ];
+                    //[5806080000, 'Last century', 'Next century'], // 60*60*24*7*4*12*100*2
+                    //[58060800000, 'centuries', 2903040000] // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
+        ];
         var seconds = (+new Date() - time) / 1000;
         var token = 'לפני';
         var list_choice = 1;
-        if (seconds == 0) return 'עכשיו';
+        if (seconds === 0)
+            return 'עכשיו';
         if (seconds < 0) {
             seconds = Math.abs(seconds);
             token = 'מעכשיו';
@@ -59,10 +63,12 @@ App.filter('hebTimeAgo', function() {
         var i = 0;
         var format;
         while (format = time_formats[i++])
-        if (seconds < format[0]) {
-            if (typeof format[2] === 'string') return format[list_choice];
-            else return token + ' ' + Math.floor(seconds / format[2]) + ' ' + format[1];
-        }
+            if (seconds < format[0]) {
+                if (typeof format[2] === 'string')
+                    return format[list_choice];
+                else
+                    return token + ' ' + Math.floor(seconds / format[2]) + ' ' + format[1];
+            }
         return time;
     };
 });
