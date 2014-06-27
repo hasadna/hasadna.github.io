@@ -1,6 +1,6 @@
 
 
-/***
+/**
  * @description Count size(in bytes), and lines in files and folders.
  * @constructor
  */
@@ -15,7 +15,7 @@ function LineCounter() {
      */
     var allFiles = new Array();
 
-    /***
+    /**
      * @description Fill allFiles array with all file names under currentPath - ignor folders
      * @param {string} currentPath
      * @returns {void}
@@ -37,7 +37,7 @@ function LineCounter() {
         }
     };
 
-    /***
+    /**
      * @description Return true if fileName is or within the .git folder.
      * @param {string} fileName To check if its a git file.
      * @returns {boolean}
@@ -55,7 +55,7 @@ function LineCounter() {
     }
 
 
-    /***
+    /**
      * @description Return file size in bytes - for hard links return 0.
      * @param {string} path to get is size.
      * @returns {number} File size in bytes
@@ -68,7 +68,7 @@ function LineCounter() {
         }
     };
 
-    /***
+    /**
      * @param {string} directory to get is size.
      * @returns {number} Directory size in bytes
      */
@@ -151,7 +151,7 @@ function LineCounter() {
 
 
 
-exports.createLineCounter = function() {
+module.exports.createLineCounter = function() {
     return new LineCounter();
 };
 

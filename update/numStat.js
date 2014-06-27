@@ -1,12 +1,12 @@
 
-/***
+/**
+ * @module
  * @description Module to parse the result of git log --numstat
  * @see man git log --numstat
  */
 
 
-/***
- * 
+/**
  * Column1 = inserted
  * Column2 = removed 
  * columns are separeted by tab (\t)
@@ -39,7 +39,7 @@ var parseLineStat = function(lineStat) {
  * @param {string} numstat
  * @returns {Object<total:<number>,files:<Array>}
  */
-var parseNumStat = function(numstat) {
+module.exports.parseNumStat = function(numstat) {
     var lines = numstat.split('\n');
     var statArr = new Array();
     for (var i = 0; i < lines.length; i++) {
@@ -57,6 +57,3 @@ var parseNumStat = function(numstat) {
                 // ,'files': statArr
     };
 };
-
-
-module.exports.parseNumStat = parseNumStat;

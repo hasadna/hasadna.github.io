@@ -10,7 +10,7 @@ var colors = require('colors');
 
 
 
-/***
+/**
  * @description write File
  * @param {type} commits
  * @param {Repository} repo

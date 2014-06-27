@@ -1,10 +1,9 @@
-/***
+/**
  * @constructor
  * @param {Object} data
  * @returns {Repository}
  */
 function Repository(data) {
-    var self = this;
     /**
      * @type {string}
      */
@@ -30,8 +29,8 @@ function Repository(data) {
  * @returns {string} Folder name
  */
 Repository.prototype.getFolderName = function() {
-    var lastSlash = self.url.lastIndexOf("/");
-    return this.url.substring(lastSlash + 1, self.url.length);
+    var lastSlash = this.url.lastIndexOf("/");
+    return this.url.substring(lastSlash + 1, this.url.length);
 };
 
 Repository.prototype.getDotGitFolder = function() {

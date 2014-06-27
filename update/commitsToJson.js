@@ -15,7 +15,7 @@ var colors = require('colors');
  * ]
  * @returns {void}
  */
-function commitsArray(repo, callBack) {
+module.exports.commitsArray = function(repo, callBack) {
 
     var result = '';
     var separator = ' qqqqqqqq ';
@@ -83,4 +83,3 @@ function commitsArray(repo, callBack) {
 }
 
 
-module.exports.commitsArray = commitsArray;

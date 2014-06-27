@@ -22,7 +22,7 @@ var functionToRun;
  * @param {Function} func To run after all of the getLogForFile instances were done
  * @returns {void}
  */
-var setFunction = function(func) {
+module.exports.setFunction = function(func) {
     functionToRun = func;
 };
 
@@ -45,7 +45,7 @@ var dotGitPath = '';
  * @param {string} path
  * @returns {void}
  */
-var setDotGitPath = function(path) {
+module.exports.setDotGitPath = function(path) {
     dotGitPath = path;
 };
 
@@ -74,7 +74,7 @@ parentPath = findParentPath(parentPath);
  * @param {string} str Repository URL.
  * @returns {string} Folder name
  */
-var getFolderName = function(str) {
+module.exports.getFolderName = function(str) {
     var lastSlash = str.lastIndexOf("/");
     var end = str.length;
     if (str.indexOf('.git') === -1)
@@ -91,7 +91,7 @@ var getFolderName = function(str) {
  * @param {boolean}  verbose  Do you want a lot of output?
  * @returns {void}
  */
-var cloneOrPull = function(repoURL, callBack, verbose) {
+module.exports.cloneOrPull = function(repoURL, callBack, verbose) {
     containingFolder = getFolderName(repoURL);
     var clone = false;
     var gitFolder = '--git-dir=' + parentPath + '/repositories/' + containingFolder + '/.git';
@@ -155,7 +155,7 @@ function getRelativePath(fullPath) {
  * @param {string} fullPath of file to get its log.
  * @returns {void}
  */
-var getLogForFile = function(fullPath, callBack) {
+module.exports.getLogForFile = function(fullPath, callBack) {
     if (dotGitPath === '')
         throw new Error('\ngit-dir must be set.\nUse setGitDir to set it.'.red);
 
@@ -229,11 +229,3 @@ var getLogForFile = function(fullPath, callBack) {
         console.log(buff.toString('utf8').red);
     });
 };
-
-
-module.exports.setFunction = setFunction;
-module.exports.setDotGitPath = setDotGitPath;
-module.exports.cloneOrPull = cloneOrPull;
-module.exports.getLogForFile = getLogForFile;
-module.exports.getFolderName = getFolderName;
-

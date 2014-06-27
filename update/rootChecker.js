@@ -1,7 +1,7 @@
 var spawn = require('child_process').spawn;
 var colors = require('colors');
 
-module.exports.isRootUser = isRootUser;
+
 
 
 /**
@@ -13,7 +13,7 @@ module.exports.isRootUser = isRootUser;
  * @returns {void}
  * TODO: maybe it's better to use id 
  */
-function isRootUser(callback, testing) {
+module.exports.isRootUser = function(callback, testing) {
     if (testing) {
         callback();
         return;
@@ -30,4 +30,4 @@ function isRootUser(callback, testing) {
 
         callback();
     });
-}
+};
