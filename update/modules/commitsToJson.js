@@ -80,6 +80,4 @@ module.exports.commitsArray = function(repo, callBack) {
         var buff = new Buffer(data);
         console.log(buff.toString('utf8').red);
     });
-}
-
-
+};

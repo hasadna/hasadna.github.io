@@ -1,4 +1,4 @@
-var eKnights = require('../src/eKnightsData').eKnightsData;
+var eKnights = require('../../src/eKnightsData').eKnightsData;
 var Repository = require('./Repository').Repository;
 
 

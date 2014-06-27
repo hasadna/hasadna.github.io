@@ -2,10 +2,10 @@ var fs          = require('fs');
 var path        = require('path');
 var posix       = require('posix');
 var colors      = require('colors');
-var rootChecker = require('./rootChecker');
-var lnCounter   = require('./lineCounter').createLineCounter();
-var github      = require('./github');
-var eKnights    = require('./repositories').repositories;
+var rootChecker = require('./modules/rootChecker');
+var lnCounter   = require('./modules/lineCounter').createLineCounter();
+var github      = require('./modules/github');
+var eKnights    = require('./modules/repositories').repositories;
 var index       = eKnights.length - 1;
 
 rootChecker.isRootUser(function() {

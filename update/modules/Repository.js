@@ -34,7 +34,7 @@ Repository.prototype.getFolderName = function() {
 };
 
 Repository.prototype.getDotGitFolder = function() {
-    return __dirname + "/repositories/" + this.getFolderName() + "/.git";
+    return __dirname + "/../repositories/" + this.getFolderName() + "/.git";
 };
 
 Repository.prototype.getGithubApiUrl = function() {

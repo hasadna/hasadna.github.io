@@ -1,6 +1,6 @@
 
 /**
- *@description Sanitize JSON string before saving, so it can be read again. (Escapes newlines etc)
+ * @description Sanitize JSON string before saving, so it can be read again. (Escapes newlines etc)
  * @param {string} unsanitized string
  * @returns {string} Sanitized string
  * @see https://gist.github.com/jamischarles/1046671

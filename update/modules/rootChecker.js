@@ -26,7 +26,7 @@ module.exports.isRootUser = function(callback, testing) {
         var buff = new Buffer(data);
 
         if (buff.toString('utf8').trim() !== 'root')
-            throw Error("User must be root.".red);
+            throw Error("User must be root.".red+"\nTry to run with: sudo command");
 
         callback();
     });

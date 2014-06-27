@@ -96,6 +96,8 @@ module.exports.cloneOrPull = function(repoURL, callBack, verbose) {
     var clone = false;
     var gitFolder = '--git-dir=' + parentPath + '/repositories/' + containingFolder + '/.git';
 
+
+
     if (fs.existsSync(parentPath + '/repositories/' + containingFolder)) // If repository exist pull it, otherwise clone it.
         var process = spawn('git', [gitFolder, 'pull']);
     else {
@@ -120,8 +122,10 @@ module.exports.cloneOrPull = function(repoURL, callBack, verbose) {
             console.log(buff.toString('utf8'));
         });
         process.stderr.on('data', function(data) {
+            console.log("gitFolder: " + gitFolder);
             var buff = new Buffer(data);
             console.log(buff.toString('utf8'));
+            //throw new Error(buff.toString('utf8').red);
         });
     }
 };
@@ -228,6 +232,7 @@ module.exports.getLogForFile = function(fullPath, callBack) {
     process.stderr.on('data', function(data) {
         var buff = new Buffer(data);
         console.log(buff.toString('utf8').red);
+        //throw new Error(buff.toString('utf8').red);
     });
 };
 

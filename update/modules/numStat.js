@@ -1,4 +1,3 @@
-
 /**
  * @module
  * @description Module to parse the result of git log --numstat
