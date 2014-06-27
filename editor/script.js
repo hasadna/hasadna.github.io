@@ -5,10 +5,9 @@ var App = angular.module('App', [
 ]);
 App.directive('ngBooleanRadio', ngBooleanRadio);
 
-/***
- * 
- * @param {type} param1
- * @param {type} param2
+/**
+ * @param {object} $scope
+ * @param {object} $http
  */
 App.controller('eKnightEditor', function($scope, $http) {
 
@@ -81,8 +80,7 @@ App.controller('eKnightEditor', function($scope, $http) {
 
 });
 
-/***
- * 
+/**
  * @param {ngRoute.$routeProvider} $routeProvider
  */
 App.config(function($routeProvider) {

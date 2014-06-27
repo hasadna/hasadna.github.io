@@ -6,6 +6,8 @@ var removeHashKeys = require("./serverUtill").removeHashKeys;
 var mime = require("./serverUtill").mime;
 var port = process.argv[2] || 8888;
 var beautify = require('js-beautify').js_beautify;
+
+
 function server(request, response) {
     var uri = url.parse(request.url).pathname;
     var filename = path.join(process.cwd(), uri);
@@ -21,7 +23,7 @@ function server(request, response) {
                     + '\n// If we are running from node let be a module.'
                     + '\nif (typeof module !== \'undefined\' && module.exports)'
                     + '\n\tmodule.exports.eKnightsData = eKnightsData;';
-            fs.writeFile("../eKnightsData.js", fileContents, function(err) {
+            fs.writeFile("../src/eKnightsData.js", fileContents, function(err) {
                 if (err)
                     console.error(err);
                 else
@@ -38,7 +40,7 @@ function server(request, response) {
         return;
     }
     else {
-        path.exists(filename, function(exists) {
+        fs.exists(filename, function(exists) {
             if (!exists) {
                 response.writeHead(404, {"Content-Type": "text/plain"});
                 response.write("404 Not Found\n");
@@ -66,7 +68,7 @@ function server(request, response) {
 }
 
 // Copy eKnightsData.js to work with.
-fs.createReadStream('../eKnightsData.js').pipe(fs.createWriteStream('eKnightsData.js'));
+fs.createReadStream('../src/eKnightsData.js').pipe(fs.createWriteStream('eKnightsData.js'));
 // Remove eKnightsData.js
 function exitHandler(options, err) {
     fs.unlink('eKnightsData.js', function(err) {

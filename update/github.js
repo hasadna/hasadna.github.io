@@ -74,7 +74,7 @@ parentPath = findParentPath(parentPath);
  * @param {string} str Repository URL.
  * @returns {string} Folder name
  */
-module.exports.getFolderName = function(str) {
+var getFolderName = function(str) {
     var lastSlash = str.lastIndexOf("/");
     var end = str.length;
     if (str.indexOf('.git') === -1)
@@ -101,6 +101,7 @@ module.exports.cloneOrPull = function(repoURL, callBack, verbose) {
     else {
         var process = spawn('git', ['clone', repoURL]);
         clone = true;
+        console.log('repoURL: ' + repoURL);
     }
 
     process.on('exit', function(code) { // When exit run the callback.
@@ -108,7 +109,7 @@ module.exports.cloneOrPull = function(repoURL, callBack, verbose) {
             var src = parentPath + '/' + containingFolder;
             var des = parentPath + '/repositories/' + containingFolder;
             fs.renameSync(src, des);
-            console.log(containingFolder + ' moved from: \n' + parentPath + '\nTo:\n' + parentPath + '/repositories/');
+            console.log(containingFolder + " moved from: \n\t" + parentPath + "\nTo:\n\t" + parentPath + '/repositories/');
         }
         callBack(code, containingFolder);
     });
@@ -229,3 +230,6 @@ module.exports.getLogForFile = function(fullPath, callBack) {
         console.log(buff.toString('utf8').red);
     });
 };
+
+
+module.exports.getFolderName = getFolderName;

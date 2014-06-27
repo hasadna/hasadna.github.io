@@ -1,12 +1,12 @@
-var fs = require('fs');
-var path = require('path');
-var posix = require('posix');
-//var colors = require('colors');
+var fs          = require('fs');
+var path        = require('path');
+var posix       = require('posix');
+var colors      = require('colors');
 var rootChecker = require('./rootChecker');
-var lnCounter = require('./lineCounter').createLineCounter();
-var github = require('./github');
-var eKnights = require('./repositories').repositories;
-var index = eKnights.length - 1;
+var lnCounter   = require('./lineCounter').createLineCounter();
+var github      = require('./github');
+var eKnights    = require('./repositories').repositories;
+var index       = eKnights.length - 1;
 
 rootChecker.isRootUser(function() {
     /**
@@ -77,10 +77,10 @@ var mapData = function(folderToMap, cb) {
 
     var obj = dirTree(__dirname + "/repositories/" + folderToMap);
     var fileWriter = function() {
-        fs.writeFile("../data/" + eKnights[index].slug + "-pi.json", JSON.stringify(obj), function(err) {
+        fs.writeFile("../src/data/" + eKnights[index].slug + "-pi.json", JSON.stringify(obj), function(err) {
             cb(--index);
             if (err)
-                console.log(err);
+                throw new Error(err);
             else
                 console.log("../data/" + folderToMap + "-pi.json was saved!");
         });
@@ -96,11 +96,12 @@ var repositoriesPath = __dirname + "/repositories/";
 
 function main() {
     if (index !== -1) {
-        var folderName = eKnights[index].getMainRepository().getFolderName();
-        var dotGitFolder = eKnights[index].getMainRepository().getDotGitFolder();
+        var mr = eKnights[index].getMainRepository();
+        var folderName = mr.getFolderName();
+        var dotGitFolder = mr.getDotGitFolder();
         github.setDotGitPath(dotGitFolder);
 
-        github.cloneOrPull(repositoriesPath + folderName, function() {
+        github.cloneOrPull(mr.url, function() {
             mapData(folderName, main);
         }, true);
     }

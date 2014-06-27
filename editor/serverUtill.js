@@ -1,11 +1,11 @@
 
 
 
-/***
+/**
  * @see https://github.com/ry/node_chat/blob/master/fu.js
  */
-var mime = {
-    /***
+module.exports.mime = {
+    /**
      * @description Returns MIME type for extension, or fallback, or octet-steam
      * @param {string} ext
      * @param {string} fallback
@@ -185,11 +185,11 @@ var mime = {
 };
 
 
-/***
+/**
  * @description Remove All angular $$HashKeys from obj and its childrens recursive
  * @param {Object} obj
  */
-function removeHashKeys(obj) {
+module.exports.removeHashKeys = function(obj) {
     var k;
     if (obj instanceof Object) {
         if (obj.$$hashKey)
@@ -200,8 +200,4 @@ function removeHashKeys(obj) {
                 removeHashKeys(obj[k]); // Recursive call
         }
     }
-}
-
-
-module.exports.removeHashKeys = removeHashKeys;
-module.exports.mime = mime;
+};
