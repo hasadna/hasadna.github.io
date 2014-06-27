@@ -63,7 +63,7 @@
     <span class="issue-title-time"
           title="Created at {{issue.israelFormatCreated_at}}"
           >about {{issue.timeSince}} ago</span>
-
+    <div class="clearfix"></div>
     <div class="bubble-container" ng-repeat="comment in issue.comments_list">
         <div class="authorPlaceholder bubble-avatar"
              style="background-image: url({{comment.user.avatar_url}});"
