@@ -28,7 +28,7 @@ var getEvents = function(url, page, callback){
 
 
 
-var newEvents;
+//var newEvents;
 
 
 
