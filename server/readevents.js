@@ -1,8 +1,8 @@
 //Known events file    
-var events = require('./events.json');
+var events = require('../events.json');
 
 //eKnights file
-var eKnightsData = require('./dest/eKnightsData.js');
+var eKnightsData = require('../dest/eKnightsData.js');
 var repos = eKnightsData.eKnightsData;
 
 //Git hub user credentials
