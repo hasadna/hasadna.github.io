@@ -6,6 +6,7 @@ update/repositories*
 doc/
 node_modules/
 npm-debug.log
+creds.js
 
 # ignore backups
 *~

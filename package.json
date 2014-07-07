@@ -16,6 +16,8 @@
         "grunt-jsdoc": "^0.5.4",
         "grunt-line-remover": "0.0.2",
         "grunt-prettify": "^0.3.5",
-        "grunt-script-link-tags": "~0.0.5"
+        "grunt-script-link-tags": "~0.0.5",
+	"express": "4.x",
+        "cron": ""
     }
 }
