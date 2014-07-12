@@ -189,7 +189,7 @@ module.exports.mime = {
  * @description Remove All angular $$HashKeys from obj and its childrens recursive
  * @param {Object} obj
  */
-module.exports.removeHashKeys = function(obj) {
+ var removeHashKeys = function(obj) {
     var k;
     if (obj instanceof Object) {
         if (obj.$$hashKey)
@@ -201,3 +201,4 @@ module.exports.removeHashKeys = function(obj) {
         }
     }
 };
+module.exports.removeHashKeys=removeHashKeys;
