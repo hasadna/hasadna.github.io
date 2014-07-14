@@ -24,6 +24,7 @@ var eKnightsData = [{
         "url": "https://github.com/hasadna/Open-Knesset-Mobile",
         "about": "",
         "main": false
+<<<<<<< HEAD
     }, {
         "name": "ok-static",
         "url": "https://github.com/hasadna/ok-static",
@@ -119,6 +120,117 @@ var eKnightsData = [{
         "url": "https://github.com/hasadna/obudget",
         "about": "",
         "main": true
+=======
+    }, {
+        "name": "ok-static",
+        "url": "https://github.com/hasadna/ok-static",
+        "about": "Less files and static pages generated from http://oknesset.org",
+        "main": false
+    }, {
+        "name": "Open Knesset Templates",
+        "url": "https://github.com/hasadna/ok-templates",
+        "about": "This repository holds the code for Open Knesset templates, sample data and code to run as development server. You are invited to fork the code, improve the design and send a pull request",
+        "main": false
+    }, {
+        "name": "okscraper-django",
+        "url": "https://github.com/hasadna/okscraper-django",
+        "about": "okscraper django integration",
+        "main": false
+    }, {
+        "name": "Open Knesset Web Application",
+        "url": "https://github.com/hasadna/ok-web",
+        "about": "Web Interface for the Open Knesset API",
+        "main": false
+    }]
+}, {
+    "name": "קהילה פתוחה",
+    "permalink": "http://opencommunity.org.il",
+    "about": "הגברת רמת המעורבות של הציבור בקהילה על ידי שיתופו באופן שיטתי בתהליך קבלת ההחלטות, ומימוש, הלכה למעשה, את היותו הריבון של הקהילה.",
+    "status": "בקע מן הביצה",
+    "entry_level": "מתקדמים",
+    "discussion_board": "https://groups.google.com/forum/#!forum/omiflaga",
+    "issuesUrl": "https://api.github.com/repos/hasadna/OpenCommunity/issues",
+    "slug": "open-community",
+    "github_repo": "https://github.com/hasadna/OpenCommunity",
+    "leaders": ["BoazChen", "nonZero"],
+    "repositories": [{
+        "name": "קהילה פתוחה",
+        "url": "https://github.com/hasadna/OpenCommunity",
+        "about": "",
+        "main": true
+    }]
+}, {
+    "name": "התקציב המקומי הפתוח",
+    "about": "עידוד רשויות מקומיות להתנהל לפי עקרונות של שקיפות ושיתוף הציבור והגברת מעורבותם של התושבים בהתנהלות הממשל המקומי",
+    "status": "דגירה",
+    "entry_level": "גיבורי-על",
+    "github_repo": "https://github.com/hasadna/openmuni-budgets",
+    "issuesUrl": "https://api.github.com/repos/hasadna/openmuni-budgets/issues",
+    "slug": "openmuni-budgets",
+    "leaders": ["pwalsh", "idoivri", "ydaniv"],
+    "discussion_board": "https://groups.google.com/forum/#!forum/open-municipality",
+    "repositories": [{
+        "name": "התקציב המקומי הפתוח",
+        "url": "https://github.com/hasadna/openmuni-budgets",
+        "about": "A web app and web API for storing, accessing, visualizing and comparing budgetary data from Israeli municipalities.",
+        "main": true
+    }]
+}, {
+    "name": "פותחן התקציב",
+    "permalink": "http://compare.open-budget.org.il",
+    "about": "השוואת תקציב המדינה לשנת 2013/2014 לתקציב 2011/2012 והצפת הסעיפים שגדלו במיוחד או קטנו (בוצע בשיתוף עם ׳כלכליסט׳).",
+    "status": "פרח מן הקן",
+    "entry_level": "גיבורי-על",
+    "issuesUrl": "https://api.github.com/repos/OpenBudget/obudget_comparator/issues",
+    "slug": "obudget-comparator",
+    "github_repo": "https://github.com/OpenBudget/obudget_comparator",
+    "leaders": ["akariv", "mushon"],
+    "repositories": [{
+        "name": "פותחן התקציב",
+        "url": "https://github.com/OpenBudget/obudget_comparator",
+        "about": "הויזואליזציה של הבועות (+קוד לניתוח המידע התקציבי).\nאפליקציית client-only, מבוססת coffeescript ו-d3.",
+        "main": true
+    }]
+}, {
+    "name": "התקציב הפתוח",
+    "permalink": "http://budget.msh.gov.il",
+    "about": "הצגת תקציב המדינה, מאז 1992 ועד 2014, השוואה היסטורית, חיפוש ועוד.\nהפרויקט קם לאחר השריפה בכרמל והמשיך כשיתוף פעולה עם המשרד של השר מיקי איתן.\nעלה לאוויר במרץ 2011.\n(חוץ מזה: החשמביר השני והדוד של הסדנא).",
+    "status": "פרח מן הקן",
+    "entry_level": "גיבורי-על",
+    "github_repo": "https://github.com/OpenBudget/obudget",
+    "issuesUrl": "https://api.github.com/repos/OpenBudget/obudget/issues",
+    "slug": "obudget-gov",
+    "leaders": ["akariv", "daonb"],
+    "repositories": [{
+        "name": "התקציב הפתוח",
+        "url": "https://github.com/OpenBudget/obudget",
+        "about": "שרת מבוסס django וצד משתמש על בסיס GWT.",
+        "main": true
+    }]
+}, {
+    "name": "פותחים את התקציב",
+    "permalink": "http://the.open-budget.org.il/stg/",
+    "about": "הנגשת תקציב המדינה על כל רבדיו (העברות תקציביות, תמיכות וכד).",
+    "status": "בקע מן הביצה",
+    "entry_level": "מתקדמים",
+    "github_repo": "https://github.com/OpenBudget/open-budget-frontend",
+    "issuesUrl": "https://api.github.com/repos/OpenBudget/open-budget-frontend/issues",
+    "slug": "open-budget",
+    "leaders": ["akariv", "mushon"],
+    "repositories": [{
+        "name": "אפליקציית ה-web שלנו",
+        "url": "https://github.com/OpenBudget/open-budget-frontend",
+        "about": "מבוסס coffeescript, d3 ועוד",
+        "main": true
+    }, {
+        "name": "תשתית עיבוד וגירוד הנתונים שלנו",
+        "url": "https://github.com/OpenBudget/open-budget-data",
+        "about": "pipeline נתונים מבוסס python"
+    }, {
+        "name": "שרת ה-API שלנו",
+        "url": "https://github.com/OpenBudget/open-budget-api",
+        "about": "שרת API לכל נתוני התקציב שנמצאים בידינו.\nכתוב בפייתון ורץ מעל Google AppEngine"
+>>>>>>> 71544f62307f73c4d3de379dea90ec9ccdfcf71f
     }]
 }, {
     "name": "Anyway (שם זמני)",
@@ -228,8 +340,31 @@ var eKnightsData = [{
         "about": "Common files of the Open Pension projects.",
         "main": false
     }]
+<<<<<<< HEAD
+=======
+}, {
+    "name": "מעקב טרכטנברג",
+    "about": "מעקב אחר יישום המלצות ועדת טרכטנברג, בשיתוף הממשלה, צוות ספיבק/יונה ואגודת הסטדנטים.\nהאתר עלה לרגל שנה למחאה החברתית (יולי 2012).",
+    "status": "פרח מן הקן",
+    "issuesUrl": "https://api.github.com/repos/akariv/gov-watch/issues",
+    "slug": "trachtenberg-watch",
+    "github_repo": "https://github.com/akariv/gov-watch",
+    "leaders": ["akariv","mushon"],
+    "entry_level": "מתקדמים",
+    "repositories": [{
+        "name": "מעקב טרכטנברג",
+        "url": "https://github.com/akariv/gov-watch",
+        "about": "צד שרת (מבוסס flask ו-redis) וצד משתמש (מבוסס jquery ו-isotope).",
+        "main": true
+    }],
+    "permalink": "http://watch.gov.il"
+>>>>>>> 71544f62307f73c4d3de379dea90ec9ccdfcf71f
 }];
 
 // If we are running from node let be a module.
 if (typeof module !== 'undefined' && module.exports)
+<<<<<<< HEAD
 	module.exports.eKnightsData = eKnightsData;
+=======
+	module.exports.eKnightsData = eKnightsData;
+>>>>>>> 71544f62307f73c4d3de379dea90ec9ccdfcf71f
