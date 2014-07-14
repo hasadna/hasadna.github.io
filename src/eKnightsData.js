@@ -84,9 +84,9 @@ var eKnightsData = [{
     "about": "השוואת תקציב המדינה לשנת 2013/2014 לתקציב 2011/2012 והצפת הסעיפים שגדלו במיוחד או קטנו (בוצע בשיתוף עם ׳כלכליסט׳).",
     "status": "פרח מן הקן",
     "entry_level": "גיבורי-על",
-    "issuesUrl": "https://api.github.com/repos/hasadna/open-budget/issues",
+    "issuesUrl": "https://api.github.com/repos/OpenBudget/obudget_comparator/issues",
     "slug": "obudget-comparator",
-    "github_repo": "https://github.com/hasadna/openmuni-budgets",
+    "github_repo": "https://github.com/OpenBudget/obudget_comparator",
     "leaders": ["akariv", "mushon"],
     "repositories": [{
         "name": "פותחן התקציב",
@@ -100,8 +100,8 @@ var eKnightsData = [{
     "about": "הצגת תקציב המדינה, מאז 1992 ועד 2014, השוואה היסטורית, חיפוש ועוד.\nהפרויקט קם לאחר השריפה בכרמל והמשיך כשיתוף פעולה עם המשרד של השר מיקי איתן.\nעלה לאוויר במרץ 2011.\n(חוץ מזה: החשמביר השני והדוד של הסדנא).",
     "status": "פרח מן הקן",
     "entry_level": "גיבורי-על",
-    "github_repo": "https://github.com/hasadna/obudget",
-    "issuesUrl": "https://api.github.com/repos/hasadna/obudget/issues",
+    "github_repo": "https://github.com/OpenBudget/obudget",
+    "issuesUrl": "https://api.github.com/repos/OpenBudget/obudget/issues",
     "slug": "obudget-gov",
     "leaders": ["akariv", "daonb"],
     "repositories": [{
@@ -112,12 +112,12 @@ var eKnightsData = [{
     }]
 }, {
     "name": "פותחים את התקציב",
-    "permalink": "http://the.open-budget.org.il/stg",
+    "permalink": "http://the.open-budget.org.il/stg/",
     "about": "הנגשת תקציב המדינה על כל רבדיו (העברות תקציביות, תמיכות וכד).",
     "status": "בקע מן הביצה",
     "entry_level": "מתקדמים",
-    "github_repo": "https://github.com/hasadna/obudget",
-    "issuesUrl": "https://api.github.com/repos/hasadna/obudget/issues",
+    "github_repo": "https://github.com/OpenBudget/open-budget-frontend",
+    "issuesUrl": "https://api.github.com/repos/OpenBudget/open-budget-frontend/issues",
     "slug": "open-budget",
     "leaders": ["akariv", "mushon"],
     "repositories": [{
@@ -246,10 +246,10 @@ var eKnightsData = [{
     "name": "מעקב טרכטנברג",
     "about": "מעקב אחר יישום המלצות ועדת טרכטנברג, בשיתוף הממשלה, צוות ספיבק/יונה ואגודת הסטדנטים.\nהאתר עלה לרגל שנה למחאה החברתית (יולי 2012).",
     "status": "פרח מן הקן",
-    "issuesUrl": "https://api.github.com/repos/hasadna/OpenPension/issues",
+    "issuesUrl": "https://api.github.com/repos/akariv/gov-watch/issues",
     "slug": "trachtenberg-watch",
-    "github_repo": "https://github.com/hasadna/OpenPension",
-    "leaders": "Nevepere",
+    "github_repo": "https://github.com/akariv/gov-watch",
+    "leaders": ["akariv","mushon"],
     "entry_level": "מתקדמים",
     "repositories": [{
         "name": "מעקב טרכטנברג",
