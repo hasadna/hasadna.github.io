@@ -57,6 +57,25 @@ App.controller('eKnightEditor', function($scope, $http) {
         );
     };
 
+    $scope.add = function() {
+        $scope.list.push({
+            "name": "חשמביר חדש",
+            "about": "",
+            "status": "",
+            "entry_level": "",
+            "github_repo": "",
+            "issuesUrl": "",
+            "slug": "",
+            "leaders": [],
+            "discussion_board": "",
+            "repositories": [{
+                    "name": "",
+                    "url": "",
+                    "about": "",
+                    "main": true
+                }]
+        });
+    };
     $scope.save = function() {
         window.console.log("save");
         var http_request = $http({
