@@ -44,10 +44,11 @@ angular.module('HebUtill', []).factory('HebUtill', function() {
         this.addLanguageAttribute = function(data) {
 
             for (var i = 0; i < data.length; i++) {
-                if (isMostHebrew(data[i].body))
-                    data[i].body_lang = "hebrew";
-                else
-                    data[i].body_lang = "english";
+                if (data[i].body)
+                    if (isMostHebrew(data[i].body))
+                        data[i].body_lang = "hebrew";
+                    else
+                        data[i].body_lang = "english";
                 if (data[i].title !== undefined) {
                     if (isMostHebrew(data[i].title))
                         data[i].title_lang = "hebrew";
