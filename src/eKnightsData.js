@@ -143,13 +143,7 @@ var eKnightsData = [{
     "issuesUrl": " ",
     "slug": "kikar-hamedina",
     "github_repo": "https://github.com/hasadna/kikar-hamedina",
-    "leaders": ["yotammanor"],
-    "repositories": [{
-        "name": "כיכר המדינה",
-        "url": "https://github.com/hasadna/kikar-hamedina",
-        "about": "ממשק כנסת פתוחה עם הרשתות החברתיות הדיגיטליות",
-        "main": true
-    }]
+    "leaders": ["yotammanor"]
 },{
     "name": "Anyway (שם זמני)",
     "about": "נציג באופן בהיר ונגיש מידע על תאונות, כמעט-תאונות ומפגעי תנועה ונאפשר דיון פתוח וגלוי בין נוסע לנוסע ולמקבלי ההחלטות.",
