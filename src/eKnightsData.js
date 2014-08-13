@@ -135,15 +135,15 @@ var eKnightsData = [{
         "about": "שרת API לכל נתוני התקציב שנמצאים בידינו.\nכתוב בפייתון ורץ מעל Google AppEngine"
     }]
 },{
-    "name": "יכר המדינהב",
+    "name": "כיכר המדינה",
     "permalink": "http://kikar.hasadna.org.il",
     "about": " ממשק כנסת פתוחה עם הרשתות החברתיות הדיגיטליות.",
     "status": "גוזל רעשן",
     "entry_level": "מתחילים",
-    "issuesUrl": "",
+    "issuesUrl": " ",
     "slug": "kikar-hamedina",
     "github_repo": "https://github.com/hasadna/kikar-hamedina",
-    "leaders": ["yotammanr"],
+    "leaders": ["yotammanor"],
     "repositories": [{
         "name": "כיכר המדינה",
         "url": "https://github.com/hasadna/kikar-hamedina",
