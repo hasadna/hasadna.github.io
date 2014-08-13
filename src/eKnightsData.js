@@ -134,7 +134,23 @@ var eKnightsData = [{
         "url": "https://github.com/OpenBudget/open-budget-api",
         "about": "שרת API לכל נתוני התקציב שנמצאים בידינו.\nכתוב בפייתון ורץ מעל Google AppEngine"
     }]
-}, {
+},{
+    "name": "יכר המדינהב",
+    "permalink": "http://kikar.hasadna.org.il",
+    "about": " ממשק כנסת פתוחה עם הרשתות החברתיות הדיגיטליות.",
+    "status": "גוזל רעשן",
+    "entry_level": "מתחילים",
+    "issuesUrl": "",
+    "slug": "kikar-hamedina",
+    "github_repo": "https://github.com/hasadna/kikar-hamedina",
+    "leaders": ["yotammanr"],
+    "repositories": [{
+        "name": "כיכר המדינה",
+        "url": "https://github.com/hasadna/kikar-hamedina",
+        "about": "ממשק כנסת פתוחה עם הרשתות החברתיות הדיגיטליות",
+        "main": true
+    }]
+},{
     "name": "Anyway (שם זמני)",
     "about": "נציג באופן בהיר ונגיש מידע על תאונות, כמעט-תאונות ומפגעי תנועה ונאפשר דיון פתוח וגלוי בין נוסע לנוסע ולמקבלי ההחלטות.",
     "status": "דגירה",
