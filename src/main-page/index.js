@@ -20,6 +20,7 @@ function indexCtrl($scope, $window, $http, timeUtill) {
     function addLastUpdateProperty(updatedData, status, headers, config) {
         $scope.eKnights = $window.eKnightsData;
         $scope.eKnights.forEach(function(eKnight) {
+            if (!eKnight.repositories) debugger;
             // Get main repository 
             for (var i = 0; i < eKnight.repositories.length; i++) {
                 if (eKnight.repositories[i].main === true) {

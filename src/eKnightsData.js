@@ -140,10 +140,16 @@ var eKnightsData = [{
     "about": " ממשק כנסת פתוחה עם הרשתות החברתיות הדיגיטליות.",
     "status": "גוזל רעשן",
     "entry_level": "מתחילים",
-    "issuesUrl": " ",
+    "issuesUrl": "https://api.github.com/repos/hasadna/kikar-hamedina/issues",
     "slug": "kikar-hamedina",
     "github_repo": "https://github.com/hasadna/kikar-hamedina",
-    "leaders": ["yotammanor"]
+    "leaders": ["yotammanor"],
+    "repositories": [{
+        "name": "כיכר המדינה",
+        "url": "https://github.com/hasadna/kikar-hamedina",
+        "about": "",
+        "main": true
+    }]
 },{
     "name": "Anyway (שם זמני)",
     "about": "נציג באופן בהיר ונגיש מידע על תאונות, כמעט-תאונות ומפגעי תנועה ונאפשר דיון פתוח וגלוי בין נוסע לנוסע ולמקבלי ההחלטות.",
