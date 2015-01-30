@@ -23,7 +23,7 @@ var functionToRun;
  * @returns {void}
  */
 module.exports.setFunction = function(func) {
-    functionToRun = func;
+	functionToRun = func;
 };
 
 
@@ -46,7 +46,7 @@ var dotGitPath = '';
  * @returns {void}
  */
 module.exports.setDotGitPath = function(path) {
-    dotGitPath = path;
+	dotGitPath = path;
 };
 
 /**
@@ -56,12 +56,12 @@ var parentPath = module.parent.filename;
 
 /**
  * @description Find the path of parent module and set 'parentPath'  with it.
- * @param {string} path 
+ * @param {string} path
  * @returns {void}
  */
 function findParentPath(path) {
-    var lastSlash = path.lastIndexOf("/");
-    return path.substring(0, lastSlash);
+	var lastSlash = path.lastIndexOf("/");
+	return path.substring(0, lastSlash);
 }
 
 parentPath = findParentPath(parentPath);
@@ -75,12 +75,12 @@ parentPath = findParentPath(parentPath);
  * @returns {string} Folder name
  */
 var getFolderName = function(str) {
-    var lastSlash = str.lastIndexOf("/");
-    var end = str.length;
-    if (str.indexOf('.git') === -1)
-        end = str.length;
+	var lastSlash = str.lastIndexOf("/");
+	var end = str.length;
+	if (str.indexOf('.git') === -1)
+		end = str.length;
 
-    return str.substring(lastSlash + 1, end);
+	return str.substring(lastSlash + 1, end);
 };
 
 /**
@@ -92,63 +92,68 @@ var getFolderName = function(str) {
  * @returns {void}
  */
 module.exports.cloneOrPull = function(repoURL, callBack, verbose) {
-    containingFolder = getFolderName(repoURL);
-    var clone = false;
-    var gitFolder = '--git-dir=' + parentPath + '/repositories/' + containingFolder + '/.git';
+	containingFolder = getFolderName(repoURL);
+	var clone = false;
+	var gitFolder = '--git-dir=' + parentPath + '/repositories/' +
+		containingFolder + '/.git';
 
 
 
-    if (fs.existsSync(parentPath + '/repositories/' + containingFolder)) // If repository exist pull it, otherwise clone it.
-        var process = spawn('git', [gitFolder, 'pull']);
-    else {
-        var process = spawn('git', ['clone', repoURL]);
-        clone = true;
-        console.log('repoURL: ' + repoURL);
-    }
+	if (fs.existsSync(parentPath + '/repositories/' + containingFolder)) // If repository exist pull it, otherwise clone it.
+		var process = spawn('git', [gitFolder, 'pull']);
+	else {
+		var process = spawn('git', ['clone', repoURL]);
+		clone = true;
+		console.log('repoURL: ' + repoURL);
+	}
 
-    process.on('exit', function(code) { // When exit run the callback.
-        if (clone === true) {
-            var src = parentPath + '/' + containingFolder;
-            var des = parentPath + '/repositories/' + containingFolder;
-            fs.renameSync(src, des);
-            console.log(containingFolder + " moved from: \n\t" + parentPath + "\nTo:\n\t" + parentPath + '/repositories/');
-        }
-        callBack(code, containingFolder);
-    });
+	process.on('exit', function(code) { // When exit run the callback.
+		if (clone === true) {
+			var src = parentPath + '/' + containingFolder;
+			var des = parentPath + '/repositories/' + containingFolder;
+			if (!fs.existsSync(parentPath + '/repositories/'))
+				fs.mkdirSync(parentPath + '/repositories/');
 
-    if (verbose === true) {
-        process.stdout.on('data', function(data) {
-            var buff = new Buffer(data);
-            console.log(buff.toString('utf8'));
-        });
-        process.stderr.on('data', function(data) {
-            console.log("gitFolder: " + gitFolder);
-            var buff = new Buffer(data);
-            console.log(buff.toString('utf8'));
-            //throw new Error(buff.toString('utf8').red);
-        });
-    }
+			fs.renameSync(src, des);
+			console.log(containingFolder + " moved from: \n\t" + parentPath +
+				"\nTo:\n\t" + parentPath + '/repositories/');
+		}
+		callBack(code, containingFolder);
+	});
+
+	if (verbose === true) {
+		process.stdout.on('data', function(data) {
+			var buff = new Buffer(data);
+			console.log(buff.toString('utf8'));
+		});
+		process.stderr.on('data', function(data) {
+			console.log("gitFolder: " + gitFolder);
+			var buff = new Buffer(data);
+			console.log(buff.toString('utf8'));
+			//throw new Error(buff.toString('utf8').red);
+		});
+	}
 };
 
 
 
 /**
- * @description Get path relative to containingFolder 
+ * @description Get path relative to containingFolder
  * @param {string} fullPath
  * @returns {string}
  */
 function getRelativePath(fullPath) {
-    if (containingFolder === '')
-        throw new Error('\ncontainingFolder must be set.\nUse cloneOrPull first.'.red);
+	if (containingFolder === '')
+		throw new Error('\ncontainingFolder must be set.\nUse cloneOrPull first.'.red);
 
-    var startIndex = fullPath.indexOf(containingFolder) + containingFolder.length;
-    return fullPath.substring(startIndex + 1, fullPath.length);
+	var startIndex = fullPath.indexOf(containingFolder) + containingFolder.length;
+	return fullPath.substring(startIndex + 1, fullPath.length);
 }
 
 /**
- * @description Get log for fullPath. 
+ * @description Get log for fullPath.
  * @param {Function} callBack to run with the result.
- * The result look like this: 
+ * The result look like this:
  * [{
  * commit: '70ea710d6c009bd659edbb1daac69d49223d9e50',
  * author: 'author name',
@@ -161,79 +166,76 @@ function getRelativePath(fullPath) {
  * @returns {void}
  */
 module.exports.getLogForFile = function(fullPath, callBack) {
-    if (dotGitPath === '')
-        throw new Error('\ngit-dir must be set.\nUse setGitDir to set it.'.red);
+	if (dotGitPath === '')
+		throw new Error('\ngit-dir must be set.\nUse setGitDir to set it.'.red);
 
-    var result = '';
-    var separator = ' qqqqqqqq ';
+	var result = '';
+	var separator = ' qqqqqqqq ';
 
-    var relativePath = getRelativePath(fullPath);
-    if (relativePath === "")
-        relativePath = containingFolder + '/';
-//    console.log("fullPath: " + fullPath);
+	var relativePath = getRelativePath(fullPath);
+	if (relativePath === "")
+		relativePath = containingFolder + '/';
+	//    console.log("fullPath: " + fullPath);
 
-    var args = new Array(
-            '--git-dir=' + dotGitPath,
-            "log",
-            "--pretty=format:%H" + separator //  commit hash
-            + "%an" + separator //  author name
-            + "%ae" + separator // author email
-            + "%ad" + separator // author date 
-            + "%f" + separator // sanitized subject line, suitable for a filename
-            + "%b", // body
-            "--",
-            fullPath
-            );
+	var args = new Array(
+		'--git-dir=' + dotGitPath,
+		"log",
+		"--pretty=format:%H" + separator //  commit hash
+		+ "%an" + separator //  author name
+		+ "%ae" + separator // author email
+		+ "%ad" + separator // author date
+		+ "%f" + separator // sanitized subject line, suitable for a filename
+		+ "%b", // body
+		"--",
+		fullPath
+	);
 
-    lock++;
-    var process = spawn('git', args);
+	lock++;
+	var process = spawn('git', args);
 
 
 
-    process.stdout.on('data', function(data) { // Store stdout in result 
-        result += data.toString();
-    });
+	process.stdout.on('data', function(data) { // Store stdout in result
+		result += data.toString();
+	});
 
-    process.on('exit', function(code) { // When exit run the callback with the results.
+	process.on('exit', function(code) { // When exit run the callback with the results.
 
-        var resArr = result.split(separator);
+		var resArr = result.split(separator);
 
-        for (var i = 0; i < resArr.length; i++)// Sanitize everything
-            resArr[i] = jsonSanitizer.sanitize(resArr[i]);
+		for (var i = 0; i < resArr.length; i++) // Sanitize everything
+			resArr[i] = jsonSanitizer.sanitize(resArr[i]);
 
-        resArr.pop();//Remove the last element
+		resArr.pop(); //Remove the last element
 
-        var jsonStr = '[';
+		var jsonStr = '[';
 
-        for (var i = 0; i < resArr.length - 1; i += 5) { // Compose JSON string
-            jsonStr +=
-                    '{"commit":"' + resArr[i]
-                    + '","author":"' + resArr[i + 1]
-                    + '","author_email":"' + resArr[i + 2]
-                    + '","date":"' + resArr[i + 3]
-                    + '","body":"' + resArr[i + 4]
-                    + '"},';
-        }
+		for (var i = 0; i < resArr.length - 1; i += 5) { // Compose JSON string
+			jsonStr +=
+				'{"commit":"' + resArr[i] + '","author":"' + resArr[i + 1] +
+				'","author_email":"' + resArr[i + 2] + '","date":"' + resArr[i + 3] +
+				'","body":"' + resArr[i + 4] + '"},';
+		}
 
-        jsonStr = jsonStr.substring(0, jsonStr.length - 1)  // Remove the last comma
-                + "]";
+		jsonStr = jsonStr.substring(0, jsonStr.length - 1) // Remove the last comma
+			+ "]";
 
-        if (jsonStr === "]") // For no data
-            jsonStr = "[]";
+		if (jsonStr === "]") // For no data
+			jsonStr = "[]";
 
-        var json = JSON.parse(jsonStr);
+		var json = JSON.parse(jsonStr);
 
-        callBack(json);
-        lock--;
-        if (lock === 0)
-            functionToRun();
+		callBack(json);
+		lock--;
+		if (lock === 0)
+			functionToRun();
 
-    });
-    process.stderr.on('data', function(data) {
-        var buff = new Buffer(data);
-        console.log(buff.toString('utf8').red);
-        //throw new Error(buff.toString('utf8').red);
-    });
+	});
+	process.stderr.on('data', function(data) {
+		var buff = new Buffer(data);
+		console.log(buff.toString('utf8').red);
+		//throw new Error(buff.toString('utf8').red);
+	});
 };
 
 

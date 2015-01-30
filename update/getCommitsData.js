@@ -2,10 +2,10 @@ var fs = require('fs');
 var path = require('path');
 var util = require('util');
 var spawn = require('child_process').spawn;
-var jsonSanitizer = require('./jsonSanitizer');
-var commitsToJson = require('./commitsToJson');
-var eKnights = require('./repositories').repositories;
-var numStat = require('./numStat');
+var jsonSanitizer = require('./modules/jsonSanitizer');
+var commitsToJson = require('./modules/commitsToJson');
+var eKnights = require('./modules/repositories').repositories;
+var numStat = require('./modules/numStat');
 var colors = require('colors');
 
 
@@ -38,7 +38,7 @@ function writeFile(commits, repo) {
                 , commits[i - 1].commit
                 );
         var process = spawn('git', args);
-        process.stdout.on('data', function(data) { // Store stdout in result 
+        process.stdout.on('data', function(data) { // Store stdout in result
             result += data.toString();
         });
         process.on('exit', function(code) { // When exit run the callback with the results.
